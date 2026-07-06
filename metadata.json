@@ -1,0 +1,6 @@
+{
+  "name": "icast Elite",
+  "description": "Premium Podcast & Music Promotion Agency website showcasing services, success stories, and premium promotion options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

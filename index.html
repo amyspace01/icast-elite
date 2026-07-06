@@ -1,0 +1,2646 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>icast Elite | Premium Podcast & Music Promotion Agency</title>
+    <!-- Include Lucide CDN for beautiful iconography -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.456.0/dist/umd/lucide.min.js"></script>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                orange: '#FF6B35',
+                'orange-soft': '#FF8C42',
+                navy: '#1E2937',
+                gray: '#475569',
+                border: '#e2e8f0',
+                card: '#f8fafc'
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+      /* Custom styles for smooth scrolling and clean focus outlines */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fafafa;
+        color: #1E2937;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Highlight style for the specific logo class requested */
+      .icast-logo {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+      }
+
+      /* Glass Card styling from design theme */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Service Card hover states from clean minimal theme */
+      .service-card-minimal {
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .service-card-minimal:hover {
+        border-color: #FF6B35;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px -10px rgba(30, 41, 55, 0.08);
+      }
+
+      /* Keyframe Animations for high fidelity Framer Motion effects */
+      @keyframes wavePulse {
+        0%, 100% {
+          transform: scaleY(1);
+        }
+        50% {
+          transform: scaleY(0.15);
+        }
+      }
+      .animate-wave-pulse {
+        animation: wavePulse 1.4s ease-in-out infinite;
+        transform-origin: bottom;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(16px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .animate-slideUp {
+        animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.97);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-scaleIn {
+        animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Navigation highlights indicator design */
+      .nav-indicator {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-white text-brand-gray antialiased flex flex-col selection:bg-brand-orange/10 selection:text-brand-orange">
+
+    <!-- 1. HEADER / NAVIGATION -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b bg-white/80 backdrop-blur-xs py-5 border-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          
+          <!-- Logo Brand -->
+          <a href="#home" id="nav-logo" class="flex items-center gap-2 group cursor-pointer">
+            <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-brand-orange text-white shadow-md shadow-brand-orange/20 transition-all duration-300 group-hover:scale-105 group-hover:bg-brand-orange-soft">
+              <i data-lucide="radio" class="w-5 h-5 animate-pulse"></i>
+              <div class="absolute -inset-1 rounded-xl bg-brand-orange/30 blur-xs -z-10 opacity-0 group-hover:opacity-100 transition-all"></div>
+            </div>
+            <span class="icast-logo text-xl sm:text-2xl text-brand-navy">
+              icast<span class="text-brand-orange">Elite</span>
+            </span>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <nav class="hidden lg:flex items-center gap-8" id="desktop-nav">
+            <!-- Populated dynamically or written static for fast load -->
+            <a href="#home" class="nav-link text-sm font-medium tracking-wide transition-all duration-200 relative py-1 text-brand-orange" data-section="home">
+              Home
+              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange rounded-full"></span>
+            </a>
+            <a href="#services" class="nav-link text-sm font-medium tracking-wide transition-all duration-200 relative py-1 text-brand-navy/80 hover:text-brand-orange" data-section="services">
+              Services
+              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange rounded-full hidden"></span>
+            </a>
+            <a href="#about" class="nav-link text-sm font-medium tracking-wide transition-all duration-200 relative py-1 text-brand-navy/80 hover:text-brand-orange" data-section="about">
+              About
+              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange rounded-full hidden"></span>
+            </a>
+            <a href="#portfolio" class="nav-link text-sm font-medium tracking-wide transition-all duration-200 relative py-1 text-brand-navy/80 hover:text-brand-orange" data-section="portfolio">
+              Portfolio
+              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange rounded-full hidden"></span>
+            </a>
+            <a href="#insights" class="nav-link text-sm font-medium tracking-wide transition-all duration-200 relative py-1 text-brand-navy/80 hover:text-brand-orange" data-section="insights">
+              Insights
+              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange rounded-full hidden"></span>
+            </a>
+            <a href="#calculator" class="nav-link text-sm font-medium tracking-wide transition-all duration-200 relative py-1 text-brand-navy/80 hover:text-brand-orange" data-section="calculator">
+              Growth Calculator
+              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange rounded-full hidden"></span>
+            </a>
+          </nav>
+
+          <!-- Contact Button -->
+          <div class="hidden lg:flex items-center">
+            <button id="btn-contact-agent" class="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-navy text-white text-sm font-semibold hover:bg-brand-orange transition-all duration-300 shadow-md hover:shadow-brand-orange/15 hover:-translate-y-0.5 cursor-pointer">
+              Contact Agent
+              <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg text-brand-navy hover:text-brand-orange lg:hidden focus:outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer" aria-label="Toggle navigation menu">
+            <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Slideout Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-brand-border bg-white overflow-hidden transition-all duration-300">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+          <a href="#home" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-semibold text-brand-orange bg-brand-orange/5 border-l-4 border-brand-orange" data-section="home">Home</a>
+          <a href="#services" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-brand-navy/85 hover:bg-brand-card hover:text-brand-orange" data-section="services">Services</a>
+          <a href="#about" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-brand-navy/85 hover:bg-brand-card hover:text-brand-orange" data-section="about">About</a>
+          <a href="#portfolio" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-brand-navy/85 hover:bg-brand-card hover:text-brand-orange" data-section="portfolio">Portfolio</a>
+          <a href="#insights" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-brand-navy/85 hover:bg-brand-card hover:text-brand-orange" data-section="insights">Insights</a>
+          <a href="#calculator" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-brand-navy/85 hover:bg-brand-card hover:text-brand-orange" data-section="calculator">Growth Calculator</a>
+          
+          <div class="pt-4 border-t border-brand-border">
+            <button id="mobile-cta-btn" class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-brand-orange text-white font-semibold shadow-md shadow-brand-orange/15 hover:bg-brand-orange-soft transition-all cursor-pointer">
+              Start Growing Today
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN SINGLE PAGE LAYOUT CONTAINER -->
+    <main class="flex-grow">
+      
+      <!-- 2. HERO SECTION -->
+      <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FAF9F6] via-[#FCFAF5] to-white">
+        <!-- Decorative Grid and Ambient Lights -->
+        <div class="absolute inset-0 z-0 bg-[radial-gradient(#ff6b35_0.05rem,transparent_0.05rem)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)] opacity-20"></div>
+        <div class="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-brand-orange/5 blur-3xl -z-10 animate-pulse duration-5000"></div>
+        <div class="absolute bottom-0 left-10 w-[350px] h-[350px] rounded-full bg-brand-orange-soft/3 blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Hero Left: Headlines & Call to Actions -->
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+              
+              <!-- Micro-Tag -->
+              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/15 text-brand-orange text-xs font-semibold uppercase tracking-wider animate-fadeIn">
+                <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                <span>Premium Podcast & Music Marketing</span>
+              </div>
+
+              <!-- Headline -->
+              <div class="space-y-4">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-navy leading-tight sm:leading-none animate-slideUp">
+                  Amplify Your Voice.<br />
+                  <span class="relative inline-block mt-1 sm:mt-2">
+                    <span class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-orange-soft">
+                      Dominate the Charts.
+                    </span>
+                    <span class="absolute bottom-1 left-0 w-full h-2 bg-brand-orange/10 rounded-full -z-10"></span>
+                  </span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg md:text-xl text-brand-gray max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed animate-slideUp" style="animation-delay: 0.1s;">
+                  Expert Podcast & Music Promotion Services. We craft elite organic marketing campaigns, viral content accelerators, and technical SEO frameworks to launch your content directly onto the charts.
+                </p>
+              </div>
+
+              <!-- Button Actions -->
+              <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-slideUp" style="animation-delay: 0.2s;">
+                <button id="hero-primary-cta" class="w-full sm:w-auto px-8 py-4 bg-brand-orange text-white font-bold rounded-full shadow-lg shadow-brand-orange/20 hover:bg-brand-orange-soft hover:shadow-brand-orange/30 transform hover:-translate-y-0.5 transition-all duration-300 text-base cursor-pointer">
+                  Start Growing Today
+                </button>
+                
+                <a href="#services" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 border border-brand-border bg-white/70 hover:bg-white text-brand-navy font-semibold rounded-full transition-all hover:border-brand-orange duration-300 group">
+                  <span>Explore Services</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-brand-navy transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                </a>
+              </div>
+
+              <!-- Quick Stats Grid -->
+              <div class="pt-6 border-t border-brand-border/60 grid grid-cols-3 gap-4 animate-fadeIn" style="animation-delay: 0.3s;">
+                <div class="space-y-1">
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy">15M+</div>
+                  <div class="text-xs font-semibold text-brand-gray tracking-wide uppercase">Streams Delivered</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy">450+</div>
+                  <div class="text-xs font-semibold text-brand-gray tracking-wide uppercase">Curators Network</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy">42</div>
+                  <div class="text-xs font-semibold text-brand-gray tracking-wide uppercase">Chart Top 10s</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Hero Right: Interactive Dashboard Visualizer -->
+            <div class="lg:col-span-5 relative flex justify-center animate-scaleIn">
+              <div class="w-full max-w-[420px] rounded-3xl border border-brand-border bg-white shadow-2xl p-6 relative">
+                
+                <!-- Card Title Header -->
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-border/60">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-[#EF4444]"></span>
+                    <span class="w-3 h-3 rounded-full bg-[#F59E0B]"></span>
+                    <span class="w-3 h-3 rounded-full bg-[#10B981]"></span>
+                  </div>
+                  <div class="text-[11px] font-mono text-brand-gray/60 font-semibold uppercase tracking-widest">
+                    icast-dashboard-v3.0
+                  </div>
+                </div>
+
+                <!-- Active Chart Header -->
+                <div class="space-y-1.5 mb-6">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-brand-gray uppercase tracking-wider">Active Promo Channel</span>
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-semibold">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      LIVE CHARTING
+                    </span>
+                  </div>
+                  <div class="text-2xl font-bold text-brand-navy flex items-baseline gap-1">
+                    <span>94.8K</span>
+                    <span class="text-xs text-brand-orange font-semibold">+24.3% this hour</span>
+                  </div>
+                </div>
+
+                <!-- Graphical Visualizer (Animated Sound Wave / Waveform bars) -->
+                <div class="h-44 flex items-end justify-between gap-1 mb-6 px-1" id="waveform-container">
+                  <!-- Generated and animated via CSS variables or loaded statically. In vanilla, we hardcode 20 bars with inline animation delay -->
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 35%; animation-delay: 0.04s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 55%; animation-delay: 0.08s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-navy animate-wave-pulse" style="height: 40%; animation-delay: 0.12s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 75%; animation-delay: 0.16s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 90%; animation-delay: 0.20s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-navy animate-wave-pulse" style="height: 45%; animation-delay: 0.24s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 60%; animation-delay: 0.28s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 85%; animation-delay: 0.32s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-navy animate-wave-pulse" style="height: 100%; animation-delay: 0.36s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 70%; animation-delay: 0.40s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 80%; animation-delay: 0.44s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-navy animate-wave-pulse" style="height: 50%; animation-delay: 0.48s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 65%; animation-delay: 0.52s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 80%; animation-delay: 0.56s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-navy animate-wave-pulse" style="height: 95%; animation-delay: 0.60s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 110%; animation-delay: 0.64s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 85%; animation-delay: 0.68s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-navy animate-wave-pulse" style="height: 60%; animation-delay: 0.72s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange-soft animate-wave-pulse" style="height: 40%; animation-delay: 0.76s;"></div>
+                  <div class="w-full rounded-t-sm bg-brand-orange animate-wave-pulse" style="height: 75%; animation-delay: 0.80s;"></div>
+                </div>
+
+                <!-- Recent Achievements Indicators -->
+                <div class="space-y-3">
+                  <div class="p-3 bg-brand-card rounded-2xl border border-brand-border/60 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                      </div>
+                      <div>
+                        <div class="text-xs font-bold text-brand-navy">Weekly Target Achieved</div>
+                        <div class="text-[10px] text-brand-gray">Ranked #8 Apple Podcast (Mental)</div>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-brand-navy">+320%</span>
+                  </div>
+
+                  <div class="p-3 bg-brand-card rounded-2xl border border-brand-border/60 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-xl bg-brand-navy/10 flex items-center justify-center text-brand-navy">
+                        <i data-lucide="music" class="w-4 h-4"></i>
+                      </div>
+                      <div>
+                        <div class="text-xs font-bold text-brand-navy">Discovery Weekly Placement</div>
+                        <div class="text-[10px] text-brand-gray">4 Indie Singles Triggered</div>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-brand-orange">Active</span>
+                  </div>
+                </div>
+
+                <!-- Extra subtle float badge -->
+                <div class="absolute -top-6 -right-6 px-4 py-3 bg-brand-navy text-white rounded-2xl shadow-xl flex items-center gap-2 border border-white/10 animate-float">
+                  <div class="w-5 h-5 rounded-full bg-brand-orange flex items-center justify-center">
+                    <i data-lucide="radio" class="w-3 h-3 text-white"></i>
+                  </div>
+                  <div class="text-left">
+                    <div class="text-[10px] text-white/60 font-semibold uppercase tracking-wider">Top Chart Status</div>
+                    <div class="text-xs font-bold">100% Organic</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SERVICES SECTION -->
+      <section id="services" class="py-24 bg-white relative">
+        <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#FAF9F6]/0 to-white/0"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Title -->
+          <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/5 text-brand-orange text-xs font-semibold tracking-wider uppercase">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Full-Suite Campaigns</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-navy">
+              Elite Promotion Channels
+            </h2>
+            <p class="text-base sm:text-lg text-brand-gray">
+              We provide targeted, transparent, and chart-focused digital marketing channels designed specifically for top-tier creators, labels, and production networks.
+            </p>
+          </div>
+
+          <!-- Services Grid (Populated dynamically inside main.js) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+            <!-- Services cards injected here dynamically -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. ABOUT SECTION -->
+      <section id="about" class="py-24 bg-brand-card border-y border-brand-border/60 relative overflow-hidden">
+        <!-- Decorative background light -->
+        <div class="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-brand-orange/5 blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-brand-orange/3 blur-3xl -z-10 animate-pulse"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- About Left: Brand Mission & Story -->
+            <div class="lg:col-span-6 space-y-6">
+              <div class="space-y-4">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange text-xs font-semibold uppercase tracking-wider">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                  <span>About Us</span>
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-navy leading-tight">
+                  Grow Your Audience With Digital Strategy
+                </h2>
+              </div>
+
+              <p class="text-sm sm:text-base text-brand-gray leading-relaxed">
+                At icast Elite, we believe every voice deserves to be heard. Founded with a passion for music and podcasting, we've grown into a leading promotion agency trusted by creators worldwide.
+              </p>
+
+              <p class="text-sm sm:text-base text-brand-gray/80 leading-relaxed">
+                No shortcuts, no growth hacks. Just proven strategies to help your amazing content find the listeners who need to hear it. Our team of experts combines creativity with data-driven insights to deliver measurable results.
+              </p>
+            </div>
+
+            <!-- About Right: Premium Benefits / Guarantees Grid -->
+            <div class="lg:col-span-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="benefits-grid">
+                <!-- Hardcoded or populated dynamically -->
+                <div class="p-6 rounded-2xl bg-white border border-brand-border/60 hover:border-brand-orange/20 hover:shadow-lg hover:shadow-brand-navy/3 transition-all duration-300 group flex flex-col justify-between h-full">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-orange/5 border border-brand-orange/10 flex items-center justify-center text-brand-orange shrink-0 mb-4 group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
+                      <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-brand-navy mb-2">100% Money Back Guarantee</h3>
+                    <p class="text-xs leading-relaxed text-brand-gray/90">Complete peace of mind. If we do not deliver on our campaign milestones, you get a full refund.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white border border-brand-border/60 hover:border-brand-orange/20 hover:shadow-lg hover:shadow-brand-navy/3 transition-all duration-300 group flex flex-col justify-between h-full">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-orange/5 border border-brand-orange/10 flex items-center justify-center text-brand-orange shrink-0 mb-4 group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
+                      <i data-lucide="headphones" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-brand-navy mb-2">24/7 VIP Customer Support</h3>
+                    <p class="text-xs leading-relaxed text-brand-gray/90">Your campaign never sleeps. Our dedicated audio specialists are always on standby to assist.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white border border-brand-border/60 hover:border-brand-orange/20 hover:shadow-lg hover:shadow-brand-navy/3 transition-all duration-300 group flex flex-col justify-between h-full">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-orange/5 border border-brand-orange/10 flex items-center justify-center text-brand-orange shrink-0 mb-4 group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
+                      <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-brand-navy mb-2">Weekly Performance Reports</h3>
+                    <p class="text-xs leading-relaxed text-brand-gray/90">Complete transparency. Watch your stream counts, SEO ranking, and audience growth live each week.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white border border-brand-border/60 hover:border-brand-orange/20 hover:shadow-lg hover:shadow-brand-navy/3 transition-all duration-300 group flex flex-col justify-between h-full">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-orange/5 border border-brand-orange/10 flex items-center justify-center text-brand-orange shrink-0 mb-4 group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
+                      <i data-lucide="award" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-brand-navy mb-2">100% Satisfaction Guaranteed</h3>
+                    <p class="text-xs leading-relaxed text-brand-gray/90">We are fully committed to matching your unique artistic voice with the exact listeners who crave it.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Stats Section in One Line Below -->
+          <div class="mt-20 pt-12 border-t border-brand-border/80">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div class="flex items-center gap-4 bg-white/50 backdrop-blur-xs p-5 rounded-2xl border border-brand-border/50 hover:border-brand-orange/10 transition-colors duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/5 flex items-center justify-center text-brand-orange shrink-0">
+                  <i data-lucide="headphones" class="w-5.5 h-5.5"></i>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight leading-none mb-1">2.5K+</div>
+                  <div class="text-[11px] font-semibold text-brand-gray uppercase tracking-wider leading-none">Global Clients</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 bg-white/50 backdrop-blur-xs p-5 rounded-2xl border border-brand-border/50 hover:border-brand-orange/10 transition-colors duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/5 flex items-center justify-center text-brand-orange shrink-0">
+                  <i data-lucide="rocket" class="w-5.5 h-5.5"></i>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight leading-none mb-1">15K+</div>
+                  <div class="text-[11px] font-semibold text-brand-gray uppercase tracking-wider leading-none">Projects Done</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 bg-white/50 backdrop-blur-xs p-5 rounded-2xl border border-brand-border/50 hover:border-brand-orange/10 transition-colors duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/5 flex items-center justify-center text-brand-orange shrink-0">
+                  <i data-lucide="users" class="w-5.5 h-5.5"></i>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight leading-none mb-1">39+</div>
+                  <div class="text-[11px] font-semibold text-brand-gray uppercase tracking-wider leading-none">Team Experts</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 bg-white/50 backdrop-blur-xs p-5 rounded-2xl border border-brand-border/50 hover:border-brand-orange/10 transition-colors duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/5 flex items-center justify-center text-brand-orange shrink-0">
+                  <i data-lucide="award" class="w-5.5 h-5.5"></i>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight leading-none mb-1">120+</div>
+                  <div class="text-[11px] font-semibold text-brand-gray uppercase tracking-wider leading-none">Digital Products</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 5. PORTFOLIO SECTION -->
+      <section id="portfolio" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div class="space-y-4 max-w-2xl">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/5 text-brand-orange text-xs font-semibold tracking-wider uppercase">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-orange/20"></i>
+                <span>Proven Benchmarks</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-navy">
+                Real Audience Growth. Verified Case Studies.
+              </h2>
+              <p class="text-base text-brand-gray">
+                We focus purely on compounding, high-retention client success. Explore real campaigns that scaled active follower bases, broke algorithms, and triggered global directories.
+              </p>
+            </div>
+
+            <!-- Filtering Tabs -->
+            <div class="flex flex-wrap gap-2 pt-2 md:pt-0 border-b border-brand-border md:border-b-0 pb-4 md:pb-0" id="portfolio-filters">
+              <button class="portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-white bg-brand-orange shadow-md shadow-brand-orange/15 cursor-pointer" data-filter="All">All</button>
+              <button class="portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-brand-navy/70 border border-brand-border bg-brand-card hover:bg-white hover:border-brand-orange/30 cursor-pointer" data-filter="Podcast">Podcast</button>
+              <button class="portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-brand-navy/70 border border-brand-border bg-brand-card hover:bg-white hover:border-brand-orange/30 cursor-pointer" data-filter="Music">Music</button>
+              <button class="portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-brand-navy/70 border border-brand-border bg-brand-card hover:bg-white hover:border-brand-orange/30 cursor-pointer" data-filter="Animation">Animation</button>
+              <button class="portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-brand-navy/70 border border-brand-border bg-brand-card hover:bg-white hover:border-brand-orange/30 cursor-pointer" data-filter="SEO">SEO</button>
+            </div>
+          </div>
+
+          <!-- Portfolio Cards Grid (Populated dynamically inside main.js) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20 min-h-[400px]" id="portfolio-grid">
+            <!-- Filtered portfolio cards go here -->
+          </div>
+
+          <!-- Trust Partner Marquee (Client Logos) -->
+          <div class="pt-12 border-t border-brand-border/60">
+            <div class="text-center mb-8">
+              <span class="text-[10px] font-bold text-brand-navy/40 uppercase tracking-widest">
+                Trusted by Top Platforms & Independent Artists Worldwide
+              </span>
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+              <div class="flex items-center gap-2.5 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-300">
+                <div class="w-8.5 h-8.5 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                  <i data-lucide="music" class="w-4.5 h-4.5"></i>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs font-extrabold text-brand-navy tracking-tight uppercase">Spotify</div>
+                  <div class="text-[9px] text-brand-gray font-semibold uppercase">Streaming Platform</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-300">
+                <div class="w-8.5 h-8.5 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                  <i data-lucide="radio" class="w-4.5 h-4.5"></i>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs font-extrabold text-brand-navy tracking-tight uppercase">Apple Podcasts</div>
+                  <div class="text-[9px] text-brand-gray font-semibold uppercase">Distribution Directory</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-300">
+                <div class="w-8.5 h-8.5 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                  <i data-lucide="headphones" class="w-4.5 h-4.5"></i>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs font-extrabold text-brand-navy tracking-tight uppercase">Amazon Music</div>
+                  <div class="text-[9px] text-brand-gray font-semibold uppercase">Audio Network</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-300">
+                <div class="w-8.5 h-8.5 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                  <i data-lucide="youtube" class="w-4.5 h-4.5"></i>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs font-extrabold text-brand-navy tracking-tight uppercase">YouTube Music</div>
+                  <div class="text-[9px] text-brand-gray font-semibold uppercase">Global Video & Audio</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-300">
+                <div class="w-8.5 h-8.5 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                  <i data-lucide="radio" class="w-4.5 h-4.5"></i>
+                </div>
+                <div class="text-left">
+                  <div class="text-xs font-extrabold text-brand-navy tracking-tight uppercase">iHeartRadio</div>
+                  <div class="text-[9px] text-brand-gray font-semibold uppercase">Broadcast & Streaming</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6. TESTIMONIALS SECTION -->
+      <section id="testimonials" class="py-24 bg-brand-card border-y border-brand-border/60 relative overflow-hidden">
+        <!-- Decorative Wave lines -->
+        <div class="absolute top-1/4 right-5 w-44 h-44 border-2 border-brand-orange/5 rounded-full -z-10 animate-pulse duration-4000"></div>
+        <div class="absolute bottom-1/4 left-5 w-56 h-56 border-2 border-brand-orange-soft/3 rounded-full -z-10"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          
+          <!-- Header Icon -->
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-orange/10 text-brand-orange mb-8 shadow-xs">
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mb-16">
+            Words From Chart-Topping Clients
+          </h2>
+
+          <!-- Carousel Container -->
+          <div class="relative min-h-[340px] flex items-center justify-center px-4 sm:px-12">
+            
+            <!-- Active Testimonial Card (Rendered Dynamically) -->
+            <div id="testimonial-card-container" class="space-y-8 w-full transition-opacity duration-300 opacity-100">
+              <!-- Active Slide Injected Dynamically by main.js -->
+            </div>
+
+            <!-- Left Arrow Button -->
+            <button id="testimonial-prev-btn" class="absolute left-0 p-3 rounded-2xl bg-white border border-brand-border text-brand-navy hover:text-brand-orange hover:shadow-lg transition-all duration-200 cursor-pointer hidden sm:flex items-center justify-center" aria-label="Previous testimonial">
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Right Arrow Button -->
+            <button id="testimonial-next-btn" class="absolute right-0 p-3 rounded-2xl bg-white border border-brand-border text-brand-navy hover:text-brand-orange hover:shadow-lg transition-all duration-200 cursor-pointer hidden sm:flex items-center justify-center" aria-label="Next testimonial">
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+
+          </div>
+
+          <!-- Navigation Indicator Dots (Generated Dynamically) -->
+          <div class="flex justify-center gap-2.5 mt-10" id="testimonial-dots"></div>
+
+        </div>
+      </section>
+
+      <!-- 7. BLOG / INSIGHTS SECTION -->
+      <section id="insights" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header with Scrolling Controls -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div class="max-w-3xl space-y-4 text-left">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/5 text-brand-orange text-xs font-semibold tracking-wider uppercase">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                <span>Growth Knowledge</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-navy">
+                Industry Secrets & Strategy Insights
+              </h2>
+              <p class="text-base text-brand-gray">
+                Read professional growth case studies, technical algorithms explanations, and creative design techniques to accelerate your media influence.
+              </p>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex items-center gap-3 shrink-0 self-start md:self-end">
+              <button id="blog-scroll-left" class="w-11 h-11 rounded-full border border-brand-border bg-white text-brand-navy flex items-center justify-center hover:bg-brand-orange hover:text-white hover:border-transparent transition-all shadow-xs active:scale-95 cursor-pointer" aria-label="Scroll left">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+              </button>
+              <button id="blog-scroll-right" class="w-11 h-11 rounded-full border border-brand-border bg-white text-brand-navy flex items-center justify-center hover:bg-brand-orange hover:text-white hover:border-transparent transition-all shadow-xs active:scale-95 cursor-pointer" aria-label="Scroll right">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Scrollable Container with Snap alignment -->
+          <div id="blog-scroller" style="scrollbar-width: none; -ms-overflow-style: none;" class="flex gap-6 overflow-x-auto pb-8 pt-2 snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [&::-webkit-scrollbar]:hidden">
+            <!-- Blog Cards dynamically injected by main.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 8. INTERACTIVE GROWTH ESTIMATOR -->
+      <section id="calculator" class="py-24 bg-brand-card border-y border-brand-border/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Header Title -->
+          <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/5 text-brand-orange text-xs font-semibold tracking-wider uppercase">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+              <span>Interactive Tool</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-navy">
+              Project Your Growth
+            </h2>
+            <p class="text-base text-brand-gray">
+              Estimate your promotional metrics instantly. Slide your monthly campaign budget and select your asset type to see expected reach, listener acquisition, and curator submissions.
+            </p>
+          </div>
+
+          <!-- Calculator Card Container -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto items-center">
+            
+            <!-- Slider and Controls Left Column -->
+            <div class="lg:col-span-6 bg-white border border-brand-border p-6 sm:p-8 rounded-3xl shadow-lg space-y-8">
+              
+              <!-- Toggles -->
+              <div class="space-y-3">
+                <label class="text-xs font-extrabold text-brand-navy/60 uppercase tracking-widest block">
+                  1. Campaign Direction
+                </label>
+                <div class="grid grid-cols-2 gap-3">
+                  <button id="calc-toggle-podcast" class="flex items-center justify-center gap-2.5 py-3 rounded-2xl text-xs font-bold border transition-all border-brand-orange bg-brand-orange/5 text-brand-orange shadow-xs cursor-pointer">
+                    <i data-lucide="radio" class="w-4 h-4"></i>
+                    <span>Podcast Show</span>
+                  </button>
+
+                  <button id="calc-toggle-music" class="flex items-center justify-center gap-2.5 py-3 rounded-2xl text-xs font-bold border transition-all border-brand-border bg-brand-card text-brand-navy/80 hover:bg-white hover:border-brand-orange/20 cursor-pointer">
+                    <i data-lucide="music" class="w-4 h-4"></i>
+                    <span>Music Release</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Slider control -->
+              <div class="space-y-4">
+                <div class="flex justify-between items-baseline">
+                  <label class="text-xs font-extrabold text-brand-navy/60 uppercase tracking-widest">
+                    2. Campaign Monthly Budget
+                  </label>
+                  <span class="text-2xl sm:text-3xl font-extrabold text-brand-orange" id="calc-budget-display">
+                    $2,500
+                  </span>
+                </div>
+
+                <!-- Range Input -->
+                <input type="range" min="100" max="10000" step="100" value="2500" id="calc-budget-slider" class="w-full h-2 bg-brand-border rounded-lg appearance-none cursor-pointer accent-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20" aria-label="Campaign budget slider" />
+
+                <!-- Slider scale helpers -->
+                <div class="flex justify-between text-[10px] font-bold text-brand-gray/60 uppercase">
+                  <span>Min: $100</span>
+                  <span>Mid: $5,000</span>
+                  <span>Max: $10,000</span>
+                </div>
+              </div>
+
+              <!-- Micro warning notice -->
+              <p class="text-[11px] leading-relaxed text-brand-gray bg-brand-card p-4 rounded-xl border border-brand-border/40">
+                *All calculations are dynamic projections derived from historical performance databases across our last 300 campaigns. Individual results can vary depending on content quality, category tags, and artwork styles.
+              </p>
+
+            </div>
+
+            <!-- Results Output Right Column -->
+            <div class="lg:col-span-6 space-y-6">
+              <h3 class="text-xs font-bold text-brand-navy/60 uppercase tracking-widest">
+                Estimated Campaign Results
+              </h3>
+
+              <!-- Projections Matrix -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <!-- Est Reach -->
+                <div class="p-5 bg-white border border-brand-border rounded-2xl space-y-1.5 flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0">
+                    <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-bold text-brand-gray uppercase tracking-wider">Est. Downloads</div>
+                    <div class="text-xl font-extrabold text-brand-navy" id="proj-reach">25K - 35K</div>
+                  </div>
+                </div>
+
+                <!-- Est Listeners -->
+                <div class="p-5 bg-white border border-brand-border rounded-2xl space-y-1.5 flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-brand-navy/10 text-brand-navy flex items-center justify-center shrink-0">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-bold text-brand-gray uppercase tracking-wider">Projected New Listeners</div>
+                    <div class="text-xl font-extrabold text-brand-navy" id="proj-listeners">2,600 - 3,360</div>
+                  </div>
+                </div>
+
+                <!-- Est Curators -->
+                <div class="p-5 bg-white border border-brand-border rounded-2xl space-y-1.5 flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0">
+                    <i data-lucide="radio" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-bold text-brand-gray uppercase tracking-wider">Curator Submissions</div>
+                    <div class="text-xl font-extrabold text-brand-navy" id="proj-curators">140 Networks</div>
+                  </div>
+                </div>
+
+                <!-- Est Potential -->
+                <div class="p-5 bg-white border border-brand-border rounded-2xl space-y-1.5 flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-brand-navy/10 text-brand-navy flex items-center justify-center shrink-0">
+                    <i data-lucide="award" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-bold text-brand-gray uppercase tracking-wider">Expected Chart Boost</div>
+                    <div class="text-sm font-extrabold text-brand-navy leading-snug" id="proj-chart">Top 100 Genre Charts Potential</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Launch Quote CTA button -->
+              <button id="calc-apply-cta" class="w-full flex items-center justify-between p-5 rounded-2xl bg-brand-navy text-white hover:bg-brand-orange hover:shadow-lg transition-all duration-300 cursor-pointer text-left">
+                <div>
+                  <div class="text-xs text-white/70 font-semibold uppercase">Apply Estimate</div>
+                  <div class="text-sm font-extrabold">Generate Custom Quote with this Budget</div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white">
+                  <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </div>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 9. CONTACT SECTION -->
+      <section id="contact" class="py-24 bg-white relative overflow-hidden text-brand-navy border-t border-brand-border/60">
+        <!-- Decorative subtle theme glows -->
+        <div class="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-brand-orange/3 blur-[120px] -z-10 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full bg-brand-orange/4 blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Contact Left Column: Info & Details -->
+            <div class="lg:col-span-5 space-y-8">
+              <div class="space-y-4">
+                <span class="text-brand-orange font-bold tracking-widest text-xs uppercase flex items-center gap-2">
+                  <span class="w-6 h-[2px] bg-brand-orange"></span>
+                  GET IN TOUCH
+                </span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-brand-navy tracking-tight leading-tight">
+                  Let's Start Your <span class="text-brand-orange">Project</span>
+                </h2>
+                <p class="text-brand-gray/80 text-sm sm:text-base leading-relaxed">
+                  Ready to amplify your voice and dominate the charts? Get in touch with our team today and let's discuss how we can help you achieve your goals.
+                </p>
+              </div>
+
+              <!-- Contact Info Badges -->
+              <div class="space-y-6 pt-4">
+                
+                <!-- Phone -->
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-brand-orange/5 border border-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-semibold text-brand-gray/70 block">Phone</span>
+                    <a href="tel:+13073577955" class="text-sm font-bold text-brand-navy hover:text-brand-orange transition-colors mt-0.5 block">
+                      +1 (307) 357-7955
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-brand-orange/5 border border-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-semibold text-brand-gray/70 block">Email</span>
+                    <a href="mailto:contact@icastelite.com" class="text-sm font-bold text-brand-navy hover:text-brand-orange transition-colors mt-0.5 block">
+                      contact@icastelite.com
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Address -->
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-brand-orange/5 border border-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-semibold text-brand-gray/70 block">Address</span>
+                    <span class="text-sm font-bold text-brand-navy mt-0.5 block">
+                      13296 San Pablo Ave, CL 94806
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Follow Us -->
+              <div class="pt-4 space-y-3">
+                <h3 class="text-sm font-bold text-brand-navy">Follow Us</h3>
+                <div class="flex gap-3">
+                  <a href="#" class="w-10 h-10 rounded-lg bg-white border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-orange hover:border-brand-orange/30 hover:shadow-sm transition-all">
+                    <i data-lucide="facebook" class="w-4.5 h-4.5"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-lg bg-white border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-orange hover:border-brand-orange/30 hover:shadow-sm transition-all">
+                    <i data-lucide="twitter" class="w-4.5 h-4.5"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-lg bg-white border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-orange hover:border-brand-orange/30 hover:shadow-sm transition-all">
+                    <i data-lucide="instagram" class="w-4.5 h-4.5"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-lg bg-white border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-orange hover:border-brand-orange/30 hover:shadow-sm transition-all">
+                    <i data-lucide="linkedin" class="w-4.5 h-4.5"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-lg bg-white border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-orange hover:border-brand-orange/30 hover:shadow-sm transition-all">
+                    <i data-lucide="youtube" class="w-4.5 h-4.5"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Contact Right Column: Form and Success panels -->
+            <div class="lg:col-span-7 bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-10 shadow-xl relative">
+              
+              <!-- Contact Form Panel -->
+              <div id="contact-form-container" class="space-y-6">
+                <div>
+                  <h3 class="text-2xl font-bold text-brand-navy">Send us a Message</h3>
+                </div>
+
+                <!-- Form Error box -->
+                <div id="contact-error-box" class="hidden p-3 bg-red-50 text-red-700 rounded-xl border border-red-100 text-xs font-semibold">
+                  Error placeholder text
+                </div>
+
+                <form id="contact-form" class="space-y-6">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                      <label for="contact-name" class="text-xs font-semibold text-brand-navy/80 block">
+                        Full Name
+                      </label>
+                      <input type="text" id="contact-name" required placeholder="John Doe" class="w-full px-4 py-3 bg-white border border-brand-border rounded-xl text-sm text-brand-navy placeholder-brand-gray/40 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all" />
+                    </div>
+
+                    <div class="space-y-2">
+                      <label for="contact-email" class="text-xs font-semibold text-brand-navy/80 block">
+                        Email Address
+                      </label>
+                      <input type="email" id="contact-email" required placeholder="john@example.com" class="w-full px-4 py-3 bg-white border border-brand-border rounded-xl text-sm text-brand-navy placeholder-brand-gray/40 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all" />
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="contact-show" class="text-xs font-semibold text-brand-navy/80 block">
+                      Show Name or Episode Title
+                    </label>
+                    <input type="text" id="contact-show" required placeholder="e.g., The icast Elite Show" class="w-full px-4 py-3 bg-white border border-brand-border rounded-xl text-sm text-brand-navy placeholder-brand-gray/40 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all" />
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="contact-service" class="text-xs font-semibold text-brand-navy/80 block">
+                      Service Interested In
+                    </label>
+                    <select id="contact-service" required class="w-full px-4 py-3 bg-white border border-brand-border rounded-xl text-sm text-brand-navy focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all cursor-pointer appearance-none" style="background-image: url(&quot;data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E2937' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e&quot;); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.25em;">
+                      <option value="" disabled selected>Select a service...</option>
+                      <option value="Podcast & Music Promotion">Podcast & Music Promotion</option>
+                      <option value="Social Media Marketing">Social Media Marketing</option>
+                      <option value="Digital Marketing">Digital Marketing</option>
+                      <option value="Email Marketing">Email Marketing</option>
+                      <option value="Animated Ads & Animation">Animated Ads & Animation</option>
+                      <option value="SEO & Analytics">SEO & Analytics</option>
+                    </select>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="contact-message" class="text-xs font-semibold text-brand-navy/80 block">
+                      Message
+                    </label>
+                    <textarea rows="5" id="contact-message" required placeholder="Tell us about your project..." class="w-full px-4 py-3 bg-white border border-brand-border rounded-xl text-sm text-brand-navy placeholder-brand-gray/40 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all resize-none"></textarea>
+                  </div>
+
+                  <div class="pt-2">
+                    <button type="submit" id="contact-submit-btn" class="w-full flex items-center justify-center gap-2 py-4 px-6 bg-brand-orange hover:bg-brand-orange-soft text-white font-extrabold rounded-xl shadow-lg shadow-brand-orange/10 hover:shadow-brand-orange/20 transition-all duration-300 disabled:opacity-70 cursor-pointer text-base uppercase tracking-wider">
+                      <span>Send Message</span>
+                      <i data-lucide="send" class="w-4 h-4 text-white"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Contact Success Panel (Hidden by default) -->
+              <div id="contact-success-container" class="hidden text-center py-6 space-y-8 animate-scaleIn">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm animate-bounce">
+                  <i data-lucide="check-circle" class="w-10 h-10 animate-pulse text-emerald-600"></i>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-2xl font-extrabold text-brand-navy">
+                    Message Sent Successfully!
+                  </h3>
+                  <p class="text-sm text-brand-gray/80 max-w-md mx-auto leading-relaxed">
+                    Thank you, <strong class="text-brand-orange" id="success-user-name">John</strong>! Your inquiry regarding the show/episode <strong class="text-brand-navy" id="success-show-title">"The Show"</strong> has been transmitted successfully.
+                  </p>
+                </div>
+
+                <!-- Receipt Block -->
+                <div class="bg-white border border-brand-border p-5 rounded-2xl max-w-md mx-auto text-left space-y-2.5 shadow-xs">
+                  <div class="text-[10px] font-bold text-brand-gray uppercase tracking-widest pb-1.5 border-b border-brand-border">
+                    Transmission Receipt
+                  </div>
+                  <div class="flex justify-between text-xs font-semibold text-brand-navy">
+                    <span class="text-brand-gray/80">Selected Service:</span>
+                    <span id="success-service-name">Service</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-semibold text-brand-navy hidden" id="success-budget-row">
+                    <span class="text-brand-gray/80">Campaign Estimate:</span>
+                    <span id="success-budget-value" class="text-brand-orange">$2,500 / mo</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-semibold text-brand-navy">
+                    <span class="text-brand-gray/80">Response SLA:</span>
+                    <span>&lt; 2 Hours</span>
+                  </div>
+                </div>
+
+                <p class="text-[11px] leading-relaxed text-brand-gray/70 max-w-xs mx-auto">
+                  A growth manager is reviewing your creative specifications and will contact you via email at <span class="text-brand-navy font-semibold" id="success-user-email">email@example.com</span>.
+                </p>
+
+                <div class="pt-4">
+                  <button id="contact-reset-btn" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-brand-border bg-white text-xs font-bold text-brand-gray hover:text-brand-orange hover:border-brand-orange/30 hover:shadow-xs transition-all cursor-pointer">
+                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                    <span>Send Another Message</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 10. FOOTER SECTION -->
+    <footer class="bg-brand-card border-t border-brand-border/60 pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-brand-border/60">
+          
+          <!-- Footer Logo & Blurb -->
+          <div class="lg:col-span-4 space-y-6">
+            <a href="#home" class="flex items-center gap-2 group cursor-pointer" id="footer-logo">
+              <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-brand-orange text-white shadow-md">
+                <i data-lucide="radio" class="w-4 h-4 text-white"></i>
+              </div>
+              <span class="icast-logo text-lg sm:text-xl text-brand-navy">
+                icast<span class="text-brand-orange">Elite</span>
+              </span>
+            </a>
+
+            <p class="text-xs sm:text-sm text-brand-gray leading-relaxed font-medium">
+              We engineer organic, compounding, and chart-focused growth strategies for elite podcast creators and independent musicians globally. Charting is a science; let’s optimize yours.
+            </p>
+
+            <!-- Social badges representation -->
+            <div class="flex gap-3 pt-2">
+              <span class="px-3 py-1.5 rounded-full border border-brand-border bg-white text-[10px] font-bold text-brand-navy/60 hover:text-brand-orange hover:border-brand-orange/30 transition-all cursor-default">Spotify</span>
+              <span class="px-3 py-1.5 rounded-full border border-brand-border bg-white text-[10px] font-bold text-brand-navy/60 hover:text-brand-orange hover:border-brand-orange/30 transition-all cursor-default">Apple Podcasts</span>
+              <span class="px-3 py-1.5 rounded-full border border-brand-border bg-white text-[10px] font-bold text-brand-navy/60 hover:text-brand-orange hover:border-brand-orange/30 transition-all cursor-default">YouTube</span>
+              <span class="px-3 py-1.5 rounded-full border border-brand-border bg-white text-[10px] font-bold text-brand-navy/60 hover:text-brand-orange hover:border-brand-orange/30 transition-all cursor-default">TikTok</span>
+            </div>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="lg:col-span-2 space-y-6">
+            <h4 class="text-xs font-bold text-brand-navy uppercase tracking-widest">Navigation</h4>
+            <ul class="space-y-3.5 text-xs sm:text-sm font-semibold">
+              <li><a href="#home" class="footer-nav-link text-brand-gray hover:text-brand-orange transition-colors">Home</a></li>
+              <li><a href="#services" class="footer-nav-link text-brand-gray hover:text-brand-orange transition-colors">Services</a></li>
+              <li><a href="#about" class="footer-nav-link text-brand-gray hover:text-brand-orange transition-colors">About</a></li>
+              <li><a href="#portfolio" class="footer-nav-link text-brand-gray hover:text-brand-orange transition-colors">Portfolio</a></li>
+              <li><a href="#insights" class="footer-nav-link text-brand-gray hover:text-brand-orange transition-colors">Insights</a></li>
+            </ul>
+          </div>
+
+          <!-- Location / Office hubs -->
+          <div class="lg:col-span-3 space-y-6">
+            <h4 class="text-xs font-bold text-brand-navy uppercase tracking-widest">Office Hubs</h4>
+            <ul class="space-y-4 text-xs sm:text-sm font-semibold text-brand-gray">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-brand-orange shrink-0 mt-0.5"></i>
+                <span>Times Square Hub: 1540 Broadway, New York, NY 10036</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-brand-orange shrink-0 mt-0.5"></i>
+                <span>SOHO Studio: 42 Wardour St, London W1D 6PX</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="mail" class="w-4 h-4 text-brand-orange shrink-0"></i>
+                <a href="mailto:hello@icastelite.com" class="hover:text-brand-orange hover:underline">hello@icastelite.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter Box -->
+          <div class="lg:col-span-3 space-y-6">
+            <h4 class="text-xs font-bold text-brand-navy uppercase tracking-widest">Weekly Growth Tips</h4>
+            <p class="text-xs text-brand-gray font-medium leading-relaxed">
+              Subscribe to get premium, actionable algorithm changes and SEO optimizations sent directly to your inbox.
+            </p>
+            
+            <div id="newsletter-form-container">
+              <form id="newsletter-form" class="flex gap-2">
+                <input type="email" required placeholder="Business email..." class="w-full px-4 py-2.5 bg-white border border-brand-border rounded-xl text-xs text-brand-navy placeholder-brand-gray/50 focus:outline-none focus:ring-1 focus:ring-brand-orange focus:border-brand-orange transition-all" />
+                <button type="submit" class="p-2.5 rounded-xl bg-brand-orange text-white hover:bg-brand-orange-soft shadow-md hover:shadow-brand-orange/10 transition-all cursor-pointer flex items-center justify-center shrink-0" aria-label="Subscribe">
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>
+                </button>
+              </form>
+            </div>
+
+            <div id="newsletter-success-box" class="hidden flex items-center gap-2 px-3 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-[11px] text-emerald-800 font-semibold animate-fadeIn">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Successfully Subscribed to Insights!</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer Base Bar -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4 text-xs font-semibold text-brand-gray/80">
+            <span>&copy; 2026 icast Elite. All Rights Reserved.</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-border/60"></span>
+            <span class="flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-4 h-4 text-brand-orange"></i>
+              Organic Campaign Certified
+            </span>
+          </div>
+
+          <!-- Scroll back to top -->
+          <button id="footer-scroll-top-btn" class="group p-3 rounded-2xl bg-white border border-brand-border text-brand-navy hover:text-brand-orange hover:shadow-md hover:border-brand-orange/20 transition-all cursor-pointer flex items-center justify-center" aria-label="Scroll back to top">
+            <i data-lucide="arrow-up" class="w-4.5 h-4.5 transition-transform duration-300 group-hover:-translate-y-0.5"></i>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <!-- ==========================================
+         DYNAMIC OVERLAYS & MODALS
+         ========================================== -->
+
+    <!-- SERVICE BLUEPRINT MODAL -->
+    <div id="service-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-brand-navy/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+      <div class="modal-backdrop absolute inset-0"></div>
+      
+      <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-brand-border z-10 p-6 sm:p-8 transform scale-95 transition-transform duration-300">
+        <!-- Close button -->
+        <button class="modal-close-btn absolute top-4 right-4 p-2 rounded-xl text-brand-navy/55 hover:text-brand-orange hover:bg-brand-card transition-all cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange" id="service-modal-icon-container">
+              <!-- Injected lucide icon dynamically -->
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-brand-orange uppercase tracking-widest">Our Blueprint</span>
+              <h4 class="text-xl sm:text-2xl font-extrabold text-brand-navy" id="service-modal-title">Service Title</h4>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h5 class="text-xs font-bold text-brand-navy/60 uppercase tracking-wider">How We Scale It</h5>
+            <p class="text-sm leading-relaxed text-brand-gray bg-brand-card p-4 rounded-2xl border border-brand-border/40" id="service-modal-benefits">
+              Benefits text
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <h5 class="text-xs font-bold text-brand-navy/60 uppercase tracking-wider">What is Included</h5>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="service-modal-features">
+              <!-- Features checklist injected here -->
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-[11px] text-brand-gray font-medium">Ready to chart your show?</span>
+            <button id="service-modal-cta" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-orange text-white text-xs font-bold hover:bg-brand-orange-soft shadow-md shadow-brand-orange/10 transition-all text-center cursor-pointer">
+              Get Package Quote
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOG ARTICLE READER MODAL -->
+    <div id="blog-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-brand-navy/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+      <div class="modal-backdrop absolute inset-0"></div>
+
+      <div class="relative w-full max-w-2xl max-h-[85vh] bg-white rounded-3xl shadow-2xl overflow-y-auto border border-brand-border z-10 transform scale-95 transition-transform duration-300">
+        
+        <!-- Header Image inside Reader -->
+        <div class="relative h-60 sm:h-72 w-full">
+          <img src="" alt="" id="blog-modal-image" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          
+          <!-- Close Button -->
+          <button class="modal-close-btn absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white hover:bg-brand-orange transition-all cursor-pointer">
+            <i data-lucide="x" class="w-5 h-5 text-white"></i>
+          </button>
+
+          <!-- Cover Text Elements -->
+          <div class="absolute bottom-6 left-6 right-6 space-y-2">
+            <span class="px-3 py-1 bg-brand-orange text-white text-[10px] font-bold uppercase rounded-full tracking-wider" id="blog-modal-category">
+              Category
+            </span>
+            <h4 class="text-xl sm:text-3xl font-extrabold text-white leading-tight" id="blog-modal-title">
+              Blog Title
+            </h4>
+          </div>
+        </div>
+
+        <!-- Reader Body Content -->
+        <div class="p-6 sm:p-8 space-y-6">
+          
+          <!-- Meta Details Bar -->
+          <div class="flex flex-wrap items-center gap-6 pb-4 border-b border-brand-border/60 text-xs text-brand-gray font-semibold">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="user" class="w-3.5 h-3.5 text-brand-orange"></i>
+              <span id="blog-modal-author">By Ryan Davies (Director)</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-orange"></i>
+              <span id="blog-modal-date">Published June 28, 2026</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-orange"></i>
+              <span id="blog-modal-readtime">5 min read</span>
+            </div>
+          </div>
+
+          <!-- Formatted Markdown-like Article Body Content -->
+          <div class="prose max-w-none text-brand-navy/90 text-sm sm:text-base leading-relaxed space-y-4" id="blog-modal-content">
+            <!-- Rendered paragraphs go here -->
+          </div>
+
+          <!-- Closing footer inside Reader -->
+          <div class="pt-6 border-t border-brand-border flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+              <img src="" alt="" id="blog-modal-author-avatar" class="w-10 h-10 rounded-full object-cover" />
+              <div>
+                <div class="text-xs font-bold text-brand-navy" id="blog-modal-author-name">Author Name</div>
+                <div class="text-[10px] text-brand-gray leading-none" id="blog-modal-author-role">Author Role</div>
+              </div>
+            </div>
+            <button id="blog-modal-cta-btn" class="w-full sm:w-auto px-6 py-3 rounded-full bg-brand-navy text-white text-xs font-semibold hover:bg-brand-orange transition-all cursor-pointer">
+              Discuss Campaign
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MAIN VANILLA SCRIPT MODULE LINK (BUNDLED INLINE) -->
+    <script type="module">
+// ==========================================
+// SECTION: SERVICES DATA
+// ==========================================
+const SERVICES_DATA = [
+  {
+    id: 'podcast-music-promo',
+    title: 'Podcast & Music Promotion',
+    description: 'Organic reach campaigns that pitch your episodes or tracks to verified playlist curators, premium directories, and major charting channels.',
+    iconName: 'Radio',
+    features: [
+      'Spotify & Apple Podcasts Pitching',
+      'Curator & Playlist Network Outreach',
+      'Global Chart Strategy Optimization',
+      'Guaranteed Directory Indexing'
+    ],
+    detailedBenefits: 'We directly pitch your tracks or podcast episodes to our verified network of 450+ high-impact playlists, music bloggers, and active directories. By optimizing metadata and driving organic traffic spikes, we help elevate your profile to charts safely and effectively.'
+  },
+  {
+    id: 'social-media-marketing',
+    title: 'Social Media Marketing',
+    description: 'High-converting video clips, dynamic audiograms, and tailored music-centric ad campaigns built specifically for TikTok, IG Reels, and YouTube Shorts.',
+    iconName: 'Share2',
+    features: [
+      'Viral Audiogram & Clip Creation',
+      'TikTok Sound Campaign Management',
+      'Platform-Specific Creator Pitching',
+      'Active Subscriber Growth Funnels'
+    ],
+    detailedBenefits: 'Maximize your impact where listeners already spend their time. We turn your audio content into highly shareable, visually stunning short-form video clips that capture immediate attention and convert casual listeners into subscribers.'
+  },
+  {
+    id: 'digital-marketing',
+    title: 'Digital Marketing',
+    description: 'Expert advertising campaigns across Spotify Ad Studio, Meta Ads, and Google Ads to acquire dedicated, lifelong listeners at a lower cost.',
+    iconName: 'Megaphone',
+    features: [
+      'Spotify Audio Ads Design',
+      'Meta & Google Target Campaigns',
+      'High-Conversion Landing Pages',
+      'Audience Retargeting Frameworks'
+    ],
+    detailedBenefits: 'Stop wasting budgets on generic boosted posts. We build high-conversion digital funnels and run hyper-targeted campaigns optimized for listeners based on their active genre, aesthetic, and listening behaviors.'
+  },
+  {
+    id: 'email-marketing',
+    title: 'Email Marketing',
+    description: 'Design, build, and monetize your list with bespoke newsletter templates, automated onboarding, and exclusive product launch funnels.',
+    iconName: 'Mail',
+    features: [
+      'Custom Newsletter Layouts',
+      'Subscriber List Building Funnels',
+      'Automated Welcome & Value Sequences',
+      'Merch & Ticket Sales Integration'
+    ],
+    detailedBenefits: 'Owning your list is the ultimate security. We build premium, high-deliverability email layouts, write high-open-rate subject lines, and establish automated campaigns that drive persistent listeners and merch buyers.'
+  },
+  {
+    id: 'animated-ads-animation',
+    title: 'Animated Ads & Animation',
+    description: 'Custom animated visualizers, lyric videos, and cinematic loops designed to establish a unique and unforgettable visual identity.',
+    iconName: 'Tv',
+    features: [
+      'Premium Lyric & Visualizer Videos',
+      '2D/3D Animated Show Trailers',
+      'Cinematic Motion-Graphics Ads',
+      'Social Media Loop Animations'
+    ],
+    detailedBenefits: 'Stand out visually in a saturated sound market. Our visual production experts build premium animated videos, stylized text visualizers, and podcast trailer cartoons that increase viewer retention by up to 240%.'
+  },
+  {
+    id: 'seo-analytics',
+    title: 'SEO & Analytics',
+    description: 'Comprehensive keyword optimization for show notes, transcripts, YouTube video setups, and custom unified growth dashboards.',
+    iconName: 'BarChart3',
+    features: [
+      'Episode & Show Notes SEO',
+      'YouTube & Google Search Ranking',
+      'Unified Custom Performance Dashboard',
+      'Curator Trend & Competitor Audits'
+    ],
+    detailedBenefits: 'Ensure your brand is found immediately when users search. We optimize titles, descriptions, transcripts, and backlink networks to position your podcast or artist page on the top rank of Spotify, Apple, and Google search.'
+  }
+];
+
+// ==========================================
+// SECTION: PORTFOLIO DATA
+// ==========================================
+const PORTFOLIO_DATA = [
+  {
+    id: 'growth-mindset-podcast',
+    title: 'Scaling an Indie Wellness Show to Top #15 on Apple Podcasts',
+    clientName: 'The Mindset Blueprint Podcast',
+    category: 'Podcast',
+    results: [
+      '+320% Subscriber Count',
+      'Top 15 Apple Mental Health',
+      '50,000+ Monthly Downloads'
+    ],
+    description: 'Leveraged structured SEO optimization combined with high-impact Instagram Reels and organic episode pitching to target health-conscious listeners.',
+    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
+    badge: 'Podcast Case Study'
+  },
+  {
+    id: 'electro-pop-breakout',
+    title: 'Viral Spotify Playlist Campaign for Indie Electro-Pop Artist',
+    clientName: 'Lyra Vance - "Ethereal Night"',
+    category: 'Music',
+    results: [
+      '1.2M+ Spotify Streams',
+      '45K New Spotify Followers',
+      'Added to 180+ Independent Playlists'
+    ],
+    description: 'Coordinated TikTok influencer sound campaigns with targeted digital audio ads on Spotify Ad Studio to trigger Spotify’s Discover Weekly algorithm.',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
+    badge: 'Music Campaign'
+  },
+  {
+    id: 'cyber-synth-trailer',
+    title: 'Animated Cinematic Trailer for Sci-Fi Audio Drama',
+    clientName: 'Chronicles of Sector 9',
+    category: 'Animation',
+    results: [
+      '450K+ Views on YouTube',
+      '8,000+ New Podcast Listeners',
+      '94% Retention Rate on Reels'
+    ],
+    description: 'Designed a premium, stylized 2D anime-inspired animated trailer that created instant mystery, encouraging viewers to subscribe to the podcast.',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
+    badge: 'Creative Production'
+  },
+  {
+    id: 'seo-overhaul-tech-show',
+    title: 'Complete SEO & Content Re-Architecture for Tech Podcast',
+    clientName: 'DeFi Frontiers Podcast',
+    category: 'SEO',
+    results: [
+      'Rank #1 for 14 Target Keywords',
+      'Organic Search Traffic +280%',
+      'Sponsor Revenue Up by 40%'
+    ],
+    description: 'Optimized raw transcripts into highly structured, search-friendly blog posts and implemented technical schema markup to rank directly on Google.',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+    badge: 'Search & Analytics'
+  }
+];
+
+// ==========================================
+// SECTION: TESTIMONIALS DATA
+// ==========================================
+const TESTIMONIALS_DATA = [
+  {
+    id: 't1',
+    name: 'Sarah Jenkins',
+    role: 'Host & Executive Producer',
+    companyOrShow: 'The Daily Blueprint Podcast',
+    quote: 'The team at icast Elite completely turned things around for us. We were stuck at 1,000 downloads per episode. Within 3 months, our downloads tripled and we hit the Apple Podcast charts!',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    rating: 5
+  },
+  {
+    id: 't2',
+    name: 'Marcus Chen',
+    role: 'Electronic Music Producer & DJ',
+    companyOrShow: 'Marcus & The Void',
+    quote: 'Organic playlist pitching is incredibly rare. icast Elite got my music onto real playlists with active listeners. No bots, no fake streams—just genuine fans who now buy merch.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    rating: 5
+  },
+  {
+    id: 't3',
+    name: 'Elena Rostova',
+    role: 'Director of Marketing',
+    companyOrShow: 'Apex Tech Networks',
+    quote: 'Our corporate podcast had zero momentum before icast Elite stepped in. Their SEO optimization of our show notes and automated email campaigns secured us 5 key B2B leads in weeks.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+    rating: 5
+  }
+];
+
+// ==========================================
+// SECTION: BLOG / INSIGHTS DATA
+// ==========================================
+const BLOG_DATA = [
+  {
+    id: 'blog1',
+    title: 'Cracking the Spotify Algorithm: What Actually Drives Discover Weekly?',
+    excerpt: 'Discover the exact signals Spotify uses to choose which indie tracks to push to thousands of active listeners, and how to optimize for them.',
+    content: `If you have ever released music on Spotify, you know how powerful the algorithmic playlists are. "Discover Weekly" and "Release Radar" can single-handedly launch an indie artist's career. But what actually drives these playlists, and how can you trigger them?
+
+First, you must understand **Spotify's Popularity Score**. Every track has a hidden rating between 0 and 100 that is based on streaming volume and velocity. If your track experiences a sudden burst of active searches, saves, and playlist additions, this score climbs rapidly.
+
+### The 3 Core Algorithmic Signals:
+1. **The Skip Rate:** This is the ultimate track-killer. If a listener skips your track in the first 30 seconds, Spotify records this as a negative vote. A healthy retention rate (at least 45% of listeners playing past 30 seconds) is required.
+2. **User Engagement Actions:** Saving a track to their library, adding it to a personal playlist, and sharing it to Instagram Stories are valued significantly higher than standard passive streams.
+3. **The Index Profile:** Spotify analyzes your track's audio characteristics (energy, valence, tempo) and compares it with other tracks. Getting added to highly relevant, genre-specific user playlists helps the algorithm categorize your music accurately.
+
+To trigger the algorithm, focus on driving highly targeted, active listeners who won't skip, rather than buying cheap, low-engagement promotion packages.`,
+    date: 'June 28, 2026',
+    readTime: '5 min read',
+    category: 'Music Marketing',
+    image: 'https://images.unsplash.com/photo-1611339555312-e607c8352fd7?auto=format&fit=crop&w=800&q=80',
+    author: {
+      name: 'Ryan Davies',
+      role: 'Director of Digital Strategy',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80'
+    }
+  },
+  {
+    id: 'blog2',
+    title: 'The Ultimate Podcast SEO Guide: How to Rank in Apple & Spotify Searches',
+    excerpt: 'A deep-dive technical look at optimizing your podcast titles, show notes, and audio transcripts to drive compounding organic traffic.',
+    content: `Most podcasters rely solely on social media posts to promote their episodes. While social media is great, its impact is short-lived. A typical tweet or reel lasts less than 24 hours. Podcast Search Engine Optimization (SEO), on the other hand, builds compounding traffic that can bring in new listeners for years.
+
+Here is how you can optimize your podcast show for maximum search visibility across directories and standard search engines.
+
+### 1. The Power of "Exact Match" Titles
+While creative and abstract episode names are tempting, they are terrible for SEO. Listeners search for terms like "How to overcome anxiety" or "Bitcoin trading for beginners". Try using a clear dual-title structure: "Creative Catchy Phrase | Explanatory Search Term with Keywords".
+
+### 2. High-Yield Show Notes
+Directories index your show notes just like web pages. Writing a simple 2-sentence description is a massive missed opportunity. Ensure each episode has:
+- A brief narrative summary containing 2-3 target keywords.
+- Bullet points highlighting the core takeaways.
+- Timestamp markers referencing crucial sections.
+- Links to guest sites and related resources.
+
+### 3. Generate and Publish Clean Transcripts
+Adding transcripts to your website is the ultimate way to rank on Google. Transcripts convert your rich audio into crawlable, text-based pages filled with natural variations of your primary keywords. Optimize this further by converting raw text into clean, sectioned articles with headers.`,
+    date: 'May 14, 2026',
+    readTime: '7 min read',
+    category: 'Podcast Growth',
+    image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=800&q=80',
+    author: {
+      name: 'Jessica Vance',
+      role: 'Lead SEO Architect',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80'
+    }
+  },
+  {
+    id: 'blog3',
+    title: 'Using Short-Form Video Animation to Turn Scrollers into Subscribers',
+    excerpt: 'Why static images fail in social feeds, and how custom animated visualizers increase user retention and clicks by over 200%.',
+    content: `It is no secret that short-form videos on TikTok, Instagram Reels, and YouTube Shorts dominate modern attention spans. But as an audio-first creator (musician or podcaster), how do you translate sound into sight?
+
+Many creators simply post a static image of their album or podcast art with an wave animation overlay. The truth? It is boring, repetitive, and gets skipped instantly.
+
+### Why Animation Works
+Custom animated ads, lyric animations, and cartoon show summaries work because they provide visual narrative. Instead of just showing that an audio file exists, it provides an expressive visual story that matches the tempo or mood of the voice:
+
+- **Dynamic Lyric Styling:** Instead of boring subtitles, animated text that grows, glows, or bursts based on vocal delivery increases retention rates.
+- **Micro-Animations:** A looping 2-D character in a lo-fi bedroom or a sci-fi cockpit keeps the human eye stimulated, buying you precious extra seconds of attention.
+- **Narrative Trailers:** Animated trailers act as commercial spots for your podcast show or album, giving viewers the cinematic experience of a film before they commit to listening.
+
+At icast Elite, we have observed that custom visualizers drive an average 2.4x higher click-through rate to streaming links compared to static audiograms.`,
+    date: 'April 02, 2026',
+    readTime: '4 min read',
+    category: 'Content Strategy',
+    image: 'https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&w=800&q=80',
+    author: {
+      name: 'Daniel Cruz',
+      role: 'Creative Director',
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80'
+    }
+  },
+  {
+    id: 'blog4',
+    title: 'The Direct-to-Fan Revolution: Why Email Lists Beat Algorithm Rental Space',
+    excerpt: 'Why social media views are transient but email lists are durable assets, and how to build an onboarding welcome sequence that converts.',
+    content: `Relying purely on social media platform feeds means building your house on rented land. Every time a platform alters its algorithm, your direct reach to your audience is throttled. Email marketing, on the other hand, remains the gold standard for durable, direct-to-fan connection.
+
+### The Core Math of Email vs. Social Media
+On average, standard social media posts reach less than 2% of your followers organically. In contrast, email newsletters consistently maintain a 22% to 35% open rate across the music and podcasting industries. A list of 1,000 email subscribers is functionally more valuable and yields more monetization opportunities than a social media profile with 50,000 followers.
+
+### Designing the High-Conversion Welcome Flow
+To turn curious signups into dedicated listeners and buyers, you must deploy an automated onboarding sequence:
+1. **The Instant Value Hook:** Deliver the promised exclusive (e.g., an unreleased track, custom PDF cheatsheet, or bonus episode) immediately inside a warm welcome email.
+2. **The Origin Story:** 48 hours later, share your authentic brand story or musical journey. Let subscribers know the human behind the audio.
+3. **The Curator's Curated Picks:** 3 days later, guide them to your top three best-performing podcast episodes or fan-favorite tracks. Make their initial exploration effortless.
+
+By establishing this direct line of communication, you build an audience that is immune to platform updates.`,
+    date: 'March 11, 2026',
+    readTime: '6 min read',
+    category: 'Audience Ownership',
+    image: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=800&q=80',
+    author: {
+      name: 'Sarah Jenkins',
+      role: 'Host & Executive Producer',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'
+    }
+  },
+  {
+    id: 'blog5',
+    title: 'Dynamic Ad Insertion vs. Host-Read Ads: Navigating Podcast Monetization',
+    excerpt: 'Analyze the shifting landscape of podcast ads, why host-read endorsements earn 3.5x higher recall, and how to structure early sponsor proposals.',
+    content: `The modern podcast monetization landscape has evolved beyond simple baked-in banner reads. Today, hosts must navigate the choice between Dynamic Ad Insertion (DAI) and Traditional Host-Read Ads. Understanding how each impacts listener experience and sponsor ROI is key to unlocking sustainable revenue.
+
+### Dynamic Ad Insertion (DAI) vs. Host-Read
+DAI technology allows hosting networks to inject target ads into catalog episodes on the fly, based on the listener's location, device, and demographic. While DAI offers incredible scalability and allows you to monetize older back-catalog episodes, it often relies on generic, pre-recorded voiceovers that sound like traditional radio commercials.
+
+In contrast, **Host-Read Ads** are voiced directly by you, the creator. Research consistently shows that host-read sponsorships generate a 3.5x higher brand recall and 2.1x higher purchase intent than dynamic, pre-recorded ads. Listeners trust your voice and perceive a personal endorsement, not just a standard interruption.
+
+### Navigating Your First Sponsorship Proposal
+When pitching to brands with an audience under 10,000 downloads per episode, avoid standard CPM pricing (which yields very low payouts). Instead, propose value-based packages:
+- **Bundle Placement:** Package a pre-roll ad with a dedicated social media story, an email newsletter mention, and a permanent link in your show notes.
+- **Performance Incentives:** Include custom affiliate promo codes with a base guarantee, sharing the upside of actual product sales.
+- **Niche Focus:** Emphasize the high engagement and specific interest profile of your community, rather than raw listener counts.
+
+Brands care about actual conversions. Presenting yourself as an authentic partner who will personally advocate for their product yields far higher retention rates and sponsor satisfaction.`,
+    date: 'February 19, 2026',
+    readTime: '8 min read',
+    category: 'Monetization Strategy',
+    image: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=800&q=80',
+    author: {
+      name: 'Marcus Chen',
+      role: 'Audio Strategy Advisor',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80'
+    }
+  }
+];
+
+// Global Application State
+const appState = {
+  estimatorModel: 'podcast', // 'podcast' or 'music'
+  selectedBudget: 2500,
+  activePortfolioFilter: 'All',
+  activeTestimonialIndex: 0,
+  testimonialIntervalId: null,
+  appliedEstimate: null, // Stores { budget, direction, service } when estimate is applied
+};
+
+// ==========================================
+// CORE INITIALIZER
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize lucide on initial HTML
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  initNavigation();
+  initMobileMenu();
+  initServicesSection();
+  initPortfolioSection();
+  initTestimonialsSection();
+  initBlogSection();
+  initCalculatorSection();
+  initContactForm();
+  initNewsletterForm();
+  initScrollToTop();
+  
+  // Highlighting active section on load
+  highlightActiveSection();
+});
+
+// ==========================================
+// NAVIGATION & SMOOTH SCROLLING
+// ==========================================
+function initNavigation() {
+  const navbar = document.getElementById('navbar');
+
+  // Change Navbar backdrop shadow on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.remove('border-transparent');
+      navbar.classList.add('bg-white/95', 'shadow-md', 'border-brand-border/60');
+    } else {
+      navbar.classList.remove('bg-white/95', 'shadow-md', 'border-brand-border/60');
+      navbar.classList.add('border-transparent');
+    }
+    highlightActiveSection();
+  });
+
+  // Handle Internal Smooth Scrolling
+  document.querySelectorAll('a[href^="#"], #hero-primary-cta, #btn-contact-agent, #mobile-cta-btn').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      let targetId = trigger.getAttribute('href');
+      
+      // If it's a button, derive destination manually
+      if (!targetId || !targetId.startsWith('#')) {
+        if (trigger.id === 'hero-primary-cta' || trigger.id === 'btn-contact-agent' || trigger.id === 'mobile-cta-btn') {
+          targetId = '#contact';
+        } else {
+          return;
+        }
+      }
+
+      e.preventDefault();
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          if (typeof lucide !== 'undefined') {
+            menuIcon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+          }
+        }
+
+        const navHeight = 85;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Highlight Menu items based on scroll intersection
+function highlightActiveSection() {
+  const sections = ['home', 'services', 'about', 'portfolio', 'insights', 'calculator'];
+  const scrollPosition = window.scrollY + 120; // offset
+
+  let activeSection = 'home';
+  for (const sectionId of sections) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const top = el.offsetTop;
+      const height = el.offsetHeight;
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        activeSection = sectionId;
+        break;
+      }
+    }
+  }
+
+  // Update Desktop Menu Classes
+  document.querySelectorAll('#desktop-nav .nav-link').forEach(link => {
+    const section = link.getAttribute('data-section');
+    const indicator = link.querySelector('.nav-indicator');
+    
+    if (section === activeSection) {
+      link.classList.add('text-brand-orange');
+      link.classList.remove('text-brand-navy/80');
+      if (indicator) indicator.classList.remove('hidden');
+    } else {
+      link.classList.remove('text-brand-orange');
+      link.classList.add('text-brand-navy/80');
+      if (indicator) indicator.classList.add('hidden');
+    }
+  });
+
+  // Update Mobile Menu Classes
+  document.querySelectorAll('#mobile-menu .mobile-nav-link').forEach(link => {
+    const section = link.getAttribute('data-section');
+    if (section === activeSection) {
+      link.classList.add('text-brand-orange', 'bg-brand-orange/5', 'border-l-4', 'border-brand-orange');
+      link.classList.remove('text-brand-navy/85', 'hover:bg-brand-card');
+    } else {
+      link.classList.remove('text-brand-orange', 'bg-brand-orange/5', 'border-l-4', 'border-brand-orange');
+      link.classList.add('text-brand-navy/85', 'hover:bg-brand-card');
+    }
+  });
+}
+
+// ==========================================
+// MOBILE MENU SLIDEOUT
+// ==========================================
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    
+    if (isOpen) {
+      mobileMenu.classList.add('hidden');
+      menuIcon.setAttribute('data-lucide', 'menu');
+    } else {
+      mobileMenu.classList.remove('hidden');
+      menuIcon.setAttribute('data-lucide', 'x');
+    }
+
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  });
+}
+
+// ==========================================
+// SERVICES SECTION & DETAIL BLUEPRINT MODAL
+// ==========================================
+function initServicesSection() {
+  const servicesGrid = document.getElementById('services-grid');
+  if (!servicesGrid) return;
+
+  // Render Services Cards
+  let servicesHtml = '';
+  SERVICES_DATA.forEach(service => {
+    const featuresList = service.features.map(f => `
+      <li class="flex items-center gap-2 text-xs font-semibold text-brand-gray/95">
+        <i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-orange shrink-0"></i>
+        <span>${f}</span>
+      </li>
+    `).join('');
+
+    servicesHtml += `
+      <div class="p-6 rounded-3xl border border-brand-border/60 bg-white hover:border-brand-orange/20 hover:shadow-xl hover:shadow-brand-navy/2 transition-all duration-300 flex flex-col justify-between group h-full">
+        <div class="space-y-6">
+          <div class="w-12 h-12 rounded-2xl bg-brand-orange/5 border border-brand-orange/10 flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
+            <i data-lucide="${getIconName(service.iconName)}" class="w-5 h-5"></i>
+          </div>
+          
+          <div class="space-y-2">
+            <h3 class="text-lg font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors">${service.title}</h3>
+            <p class="text-xs sm:text-sm text-brand-gray/90 leading-relaxed">${service.description}</p>
+          </div>
+
+          <ul class="space-y-2.5 pt-4 border-t border-brand-border/60">
+            ${featuresList}
+          </ul>
+        </div>
+
+        <div class="pt-6 mt-6">
+          <button class="view-strategy-btn w-full py-3 px-4 rounded-xl border border-brand-border/80 bg-brand-card hover:bg-white hover:border-brand-orange text-xs font-bold text-brand-navy hover:text-brand-orange transition-all cursor-pointer" data-id="${service.id}">
+            View Strategy Blueprint
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  servicesGrid.innerHTML = servicesHtml;
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Setup Blueprint Modal Trigger
+  const serviceModal = document.getElementById('service-modal');
+  const modalBackdrop = serviceModal.querySelector('.modal-backdrop');
+  const modalCloseBtns = serviceModal.querySelectorAll('.modal-close-btn');
+
+  document.querySelectorAll('.view-strategy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const serviceId = btn.getAttribute('data-id');
+      const service = SERVICES_DATA.find(s => s.id === serviceId);
+      if (service) {
+        openServiceModal(service);
+      }
+    });
+  });
+
+  // Modal Close Listeners
+  modalCloseBtns.forEach(btn => {
+    btn.addEventListener('click', closeServiceModal);
+  });
+  modalBackdrop.addEventListener('click', closeServiceModal);
+}
+
+function openServiceModal(service) {
+  const serviceModal = document.getElementById('service-modal');
+  const innerCard = serviceModal.querySelector('.relative');
+
+  // Populate Modal content
+  const iconContainer = document.getElementById('service-modal-icon-container');
+  iconContainer.innerHTML = `<i data-lucide="${getIconName(service.iconName)}" class="w-6 h-6"></i>`;
+  
+  document.getElementById('service-modal-title').innerText = service.title;
+  document.getElementById('service-modal-benefits').innerText = service.detailedBenefits;
+
+  const featuresContainer = document.getElementById('service-modal-features');
+  featuresContainer.innerHTML = service.features.map(f => `
+    <div class="flex items-center gap-2.5 p-3 rounded-xl bg-brand-card border border-brand-border/50 text-xs font-bold text-brand-navy">
+      <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
+      <span>${f}</span>
+    </div>
+  `).join('');
+
+  // Service Modal CTA action: scrolls to contact and pre-selects service
+  const modalCta = document.getElementById('service-modal-cta');
+  modalCta.onclick = () => {
+    closeServiceModal();
+    const serviceSelect = document.getElementById('contact-service');
+    if (serviceSelect) {
+      serviceSelect.value = service.title;
+    }
+    
+    // Smooth scroll to contact
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const offset = 85;
+      const top = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
+  // Re-generate Lucide for dynamically injected elements
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Animations & Show States
+  serviceModal.classList.remove('hidden');
+  setTimeout(() => {
+    serviceModal.classList.add('opacity-100');
+    innerCard.classList.remove('scale-95');
+    innerCard.classList.add('scale-100');
+  }, 10);
+}
+
+function closeServiceModal() {
+  const serviceModal = document.getElementById('service-modal');
+  const innerCard = serviceModal.querySelector('.relative');
+
+  serviceModal.classList.remove('opacity-100');
+  innerCard.classList.remove('scale-100');
+  innerCard.classList.add('scale-95');
+
+  setTimeout(() => {
+    serviceModal.classList.add('hidden');
+  }, 300);
+}
+
+// Utility icon name mapper
+function getIconName(reactIconName) {
+  const mapping = {
+    'Radio': 'radio',
+    'Share2': 'share-2',
+    'Megaphone': 'megaphone',
+    'Mail': 'mail',
+    'Tv': 'tv',
+    'BarChart3': 'bar-chart-3',
+  };
+  return mapping[reactIconName] || reactIconName.toLowerCase();
+}
+
+// ==========================================
+// PORTFOLIO SECTION & TAB FILTERING
+// ==========================================
+function initPortfolioSection() {
+  const portfolioGrid = document.getElementById('portfolio-grid');
+  const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+  if (!portfolioGrid) return;
+
+  // Render initial portfolio (All)
+  renderPortfolio('All');
+
+  // Wire up filter button click events
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Toggle CSS visual active states
+      filterBtns.forEach(b => {
+        b.className = "portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-brand-navy/70 border border-brand-border bg-brand-card hover:bg-white hover:border-brand-orange/30 cursor-pointer";
+      });
+      btn.className = "portfolio-filter-btn px-4.5 py-2 rounded-full text-xs font-bold transition-all relative text-white bg-brand-orange shadow-md shadow-brand-orange/15 cursor-pointer";
+
+      const category = btn.getAttribute('data-filter');
+      appState.activePortfolioFilter = category;
+      
+      // Animate fade-out, populate, then fade-in
+      portfolioGrid.classList.add('opacity-0', 'transition-opacity', 'duration-200');
+      setTimeout(() => {
+        renderPortfolio(category);
+        portfolioGrid.classList.remove('opacity-0');
+      }, 200);
+    });
+  });
+}
+
+function renderPortfolio(category) {
+  const portfolioGrid = document.getElementById('portfolio-grid');
+  const filteredData = category === 'All' 
+    ? PORTFOLIO_DATA 
+    : PORTFOLIO_DATA.filter(item => item.category === category);
+
+  let html = '';
+  filteredData.forEach(item => {
+    const resultsList = item.results.map(r => `
+      <div class="flex items-center gap-2 text-xs font-bold text-brand-navy bg-white/80 px-3 py-1.5 rounded-xl border border-brand-border/40">
+        <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange"></i>
+        <span>${r}</span>
+      </div>
+    `).join('');
+
+    html += `
+      <div class="flex flex-col md:flex-row rounded-3xl border border-brand-border/60 bg-brand-card overflow-hidden group hover:shadow-xl transition-all duration-300">
+        
+        <!-- Case Image & Category Badge -->
+        <div class="md:w-5/12 relative h-52 md:h-auto overflow-hidden">
+          <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent"></div>
+          
+          <span class="absolute top-4 left-4 px-3 py-1 bg-brand-orange text-white text-[10px] font-bold uppercase rounded-full tracking-wider shadow-sm">
+            ${item.badge}
+          </span>
+        </div>
+
+        <!-- Case details content -->
+        <div class="md:w-7/12 p-6 flex flex-col justify-between space-y-6">
+          <div class="space-y-3.5">
+            <span class="text-[10px] font-bold text-brand-orange uppercase tracking-wider">${item.clientName}</span>
+            <h3 class="text-base sm:text-lg font-extrabold text-brand-navy leading-snug group-hover:text-brand-orange transition-colors duration-200">
+              ${item.title}
+            </h3>
+            <p class="text-xs text-brand-gray/90 leading-relaxed">${item.description}</p>
+          </div>
+
+          <div class="space-y-2 pt-4 border-t border-brand-border/50">
+            <h4 class="text-[10px] font-bold text-brand-navy/60 uppercase tracking-wider">Metrics Achieved</h4>
+            <div class="flex flex-wrap gap-2">
+              ${resultsList}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `;
+  });
+
+  portfolioGrid.innerHTML = html;
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+// ==========================================
+// TESTIMONIALS SECTION CAROUSEL
+// ==========================================
+function initTestimonialsSection() {
+  const prevBtn = document.getElementById('testimonial-prev-btn');
+  const nextBtn = document.getElementById('testimonial-next-btn');
+  const dotsContainer = document.getElementById('testimonial-dots');
+
+  if (!dotsContainer) return;
+
+  // Build dots indicators
+  let dotsHtml = '';
+  TESTIMONIALS_DATA.forEach((_, index) => {
+    dotsHtml += `
+      <button class="testimonial-dot w-2.5 h-2.5 rounded-full transition-all duration-300 border border-brand-border cursor-pointer bg-brand-orange/20" data-index="${index}"></button>
+    `;
+  });
+  dotsContainer.innerHTML = dotsHtml;
+
+  // Dot Click Listeners
+  document.querySelectorAll('.testimonial-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      goToTestimonial(index);
+    });
+  });
+
+  // Prev/Next Clicks
+  prevBtn.addEventListener('click', () => {
+    navigateTestimonial(-1);
+  });
+  nextBtn.addEventListener('click', () => {
+    navigateTestimonial(1);
+  });
+
+  // Render first item
+  goToTestimonial(0);
+
+  // Start Autoplay Loop (8 seconds)
+  startTestimonialsAutoplay();
+}
+
+function renderTestimonial(testimonial) {
+  const container = document.getElementById('testimonial-card-container');
+  if (!container) return;
+
+  // Star Ratings Builder
+  let starsHtml = '';
+  for (let i = 0; i < 5; i++) {
+    starsHtml += `<i data-lucide="star" class="w-4 h-4 fill-brand-orange text-brand-orange"></i>`;
+  }
+
+  container.innerHTML = `
+    <blockquote class="space-y-6">
+      
+      <!-- Big double quote icon wrapper -->
+      <div class="flex justify-center text-brand-orange/25">
+        <i data-lucide="quote" class="w-10 h-10 transform rotate-180"></i>
+      </div>
+
+      <!-- Quote -->
+      <p class="text-base sm:text-xl md:text-2xl font-semibold italic text-brand-navy leading-relaxed max-w-2xl mx-auto">
+        "${testimonial.quote}"
+      </p>
+
+      <!-- Rating Stars -->
+      <div class="flex justify-center gap-1">
+        ${starsHtml}
+      </div>
+
+    </blockquote>
+
+    <!-- Client Profile Header info -->
+    <div class="flex items-center justify-center gap-4.5 pt-4">
+      <img src="${testimonial.image}" alt="${testimonial.name}" class="w-13 h-13 rounded-full object-cover border-2 border-brand-orange" />
+      <div class="text-left">
+        <div class="text-sm font-extrabold text-brand-navy">${testimonial.name}</div>
+        <div class="text-[11px] text-brand-gray font-semibold">${testimonial.role}</div>
+        <div class="text-[10px] text-brand-orange font-bold uppercase tracking-wider">${testimonial.companyOrShow}</div>
+      </div>
+    </div>
+  `;
+
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+function goToTestimonial(index) {
+  const container = document.getElementById('testimonial-card-container');
+  if (!container) return;
+
+  appState.activeTestimonialIndex = index;
+  const testimonial = TESTIMONIALS_DATA[index];
+
+  // Fade out, update content, fade in
+  container.classList.add('opacity-0');
+  setTimeout(() => {
+    renderTestimonial(testimonial);
+    container.classList.remove('opacity-0');
+  }, 150);
+
+  // Update Indicator dots active state
+  document.querySelectorAll('.testimonial-dot').forEach((dot, idx) => {
+    if (idx === index) {
+      dot.className = "testimonial-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-brand-orange shadow-md shadow-brand-orange/20 cursor-pointer";
+    } else {
+      dot.className = "testimonial-dot w-2.5 h-2.5 rounded-full transition-all duration-300 border border-brand-border bg-brand-orange/20 cursor-pointer hover:bg-brand-orange/40";
+    }
+  });
+
+  // Reset autoplay timer on interaction
+  resetTestimonialsAutoplay();
+}
+
+function navigateTestimonial(direction) {
+  let nextIdx = appState.activeTestimonialIndex + direction;
+  if (nextIdx < 0) {
+    nextIdx = TESTIMONIALS_DATA.length - 1;
+  } else if (nextIdx >= TESTIMONIALS_DATA.length) {
+    nextIdx = 0;
+  }
+  goToTestimonial(nextIdx);
+}
+
+function startTestimonialsAutoplay() {
+  appState.testimonialIntervalId = setInterval(() => {
+    navigateTestimonial(1);
+  }, 8000);
+}
+
+// Reset autoplay timer on manual navigation
+function resetTestimonialsAutoplay() {
+  if (appState.testimonialIntervalId) {
+    clearInterval(appState.testimonialIntervalId);
+    startTestimonialsAutoplay();
+  }
+}
+
+// ==========================================
+// BLOG INSIGHTS SECTION (SNAP SCROLLING)
+// ==========================================
+function initBlogSection() {
+  const blogScroller = document.getElementById('blog-scroller');
+  const scrollLeftBtn = document.getElementById('blog-scroll-left');
+  const scrollRightBtn = document.getElementById('blog-scroll-right');
+  const blogModal = document.getElementById('blog-modal');
+  const modalBackdrop = blogModal.querySelector('.modal-backdrop');
+  const modalCloseBtns = blogModal.querySelectorAll('.modal-close-btn');
+
+  if (!blogScroller) return;
+
+  // Populate Blog Cards markup
+  let blogHtml = '';
+  BLOG_DATA.forEach(post => {
+    blogHtml += `
+      <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-brand-card rounded-3xl border border-brand-border/60 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col justify-between h-[440px] group cursor-pointer blog-card-trigger" data-id="${post.id}">
+        <div>
+          <!-- Article Cover Image -->
+          <div class="h-44 overflow-hidden relative">
+            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/40 to-transparent"></div>
+            
+            <span class="absolute top-4 left-4 px-3 py-1 bg-brand-navy text-white text-[9px] font-bold uppercase rounded-full tracking-wider shadow-xs">
+              ${post.category}
+            </span>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="p-5 space-y-3">
+            <div class="flex items-center gap-4 text-[10px] text-brand-gray/80 font-bold">
+              <span class="flex items-center gap-1">
+                <i data-lucide="calendar" class="w-3 h-3"></i>
+                ${post.date}
+              </span>
+              <span class="flex items-center gap-1">
+                <i data-lucide="clock" class="w-3 h-3"></i>
+                ${post.readTime}
+              </span>
+            </div>
+
+            <h3 class="text-sm sm:text-base font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors leading-snug line-clamp-2">
+              ${post.title}
+            </h3>
+            
+            <p class="text-xs text-brand-gray line-clamp-3 leading-relaxed font-medium">
+              ${post.excerpt}
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="p-5 pt-0 flex items-center justify-between border-t border-brand-border/60 mt-auto">
+          <div class="flex items-center gap-2.5">
+            <img src="${post.author.avatar}" alt="${post.author.name}" class="w-8 h-8 rounded-full object-cover border border-brand-border" />
+            <div>
+              <div class="text-[11px] font-bold text-brand-navy">${post.author.name}</div>
+              <div class="text-[9px] text-brand-gray leading-none font-medium">${post.author.role}</div>
+            </div>
+          </div>
+          <div class="w-7 h-7 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-all">
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+      </div>
+    `;
+  });
+
+  blogScroller.innerHTML = blogHtml;
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Bind Scroller click offsets
+  scrollLeftBtn.addEventListener('click', () => {
+    blogScroller.scrollBy({ left: -340, behavior: 'smooth' });
+  });
+  scrollRightBtn.addEventListener('click', () => {
+    blogScroller.scrollBy({ left: 340, behavior: 'smooth' });
+  });
+
+  // Bind Blog Modal Reading Pane Opening
+  document.querySelectorAll('.blog-card-trigger').forEach(card => {
+    card.addEventListener('click', () => {
+      const postId = card.getAttribute('data-id');
+      const post = BLOG_DATA.find(p => p.id === postId);
+      if (post) {
+        openBlogModal(post);
+      }
+    });
+  });
+
+  // Close Readers
+  modalCloseBtns.forEach(btn => {
+    btn.addEventListener('click', closeBlogModal);
+  });
+  modalBackdrop.addEventListener('click', closeBlogModal);
+}
+
+function openBlogModal(post) {
+  const blogModal = document.getElementById('blog-modal');
+  const innerCard = blogModal.querySelector('.relative');
+
+  // Set Modal Images and metadata details
+  document.getElementById('blog-modal-image').src = post.image;
+  document.getElementById('blog-modal-image').alt = post.title;
+  document.getElementById('blog-modal-category').innerText = post.category;
+  document.getElementById('blog-modal-title').innerText = post.title;
+  document.getElementById('blog-modal-author').innerText = `By ${post.author.name} (${post.author.role})`;
+  document.getElementById('blog-modal-date').innerText = `Published ${post.date}`;
+  document.getElementById('blog-modal-readtime').innerText = post.readTime;
+
+  // Parse custom styled text content (Split paragraphs, handle headers/bullet points)
+  const formattedContent = parseMarkdownText(post.content);
+  document.getElementById('blog-modal-content').innerHTML = formattedContent;
+
+  // Author Profile Footer
+  document.getElementById('blog-modal-author-avatar').src = post.author.avatar;
+  document.getElementById('blog-modal-author-avatar').alt = post.author.name;
+  document.getElementById('blog-modal-author-name').innerText = post.author.name;
+  document.getElementById('blog-modal-author-role').innerText = post.author.role;
+
+  // Connect bottom modal CTA button to go to contact
+  const modalCta = document.getElementById('blog-modal-cta-btn');
+  modalCta.onclick = () => {
+    closeBlogModal();
+    const messageInput = document.getElementById('contact-message');
+    if (messageInput) {
+      messageInput.value = `Hi team! I just read your article "${post.title}" on ${post.category}. I'd love to discuss setting up a tailored promotional campaign for our content...`;
+    }
+    
+    // Scroll smoothly to contact form
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const offset = 85;
+      const top = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Reset scroll to top inside modal container
+  blogModal.scrollTop = 0;
+
+  // Smooth appearance transitions
+  blogModal.classList.remove('hidden');
+  setTimeout(() => {
+    blogModal.classList.add('opacity-100');
+    innerCard.classList.remove('scale-95');
+    innerCard.classList.add('scale-100');
+  }, 10);
+}
+
+function closeBlogModal() {
+  const blogModal = document.getElementById('blog-modal');
+  const innerCard = blogModal.querySelector('.relative');
+
+  blogModal.classList.remove('opacity-100');
+  innerCard.classList.remove('scale-100');
+  innerCard.classList.add('scale-95');
+
+  setTimeout(() => {
+    blogModal.classList.add('hidden');
+  }, 300);
+}
+
+// Simple parser turning markdown titles/lists into structured HTML
+function parseMarkdownText(markdown) {
+  const lines = markdown.split('\n\n');
+  return lines.map(line => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('###')) {
+      return `<h5 class="text-base font-extrabold text-brand-navy pt-2">${trimmed.replace('###', '')}</h5>`;
+    } else if (trimmed.startsWith('1.') || trimmed.startsWith('-')) {
+      const items = trimmed.split('\n').map(item => {
+        const cleanItem = item.replace(/^\d+\.\s+|^-\s+/, '').trim();
+        // Bold parsing
+        const boldClean = cleanItem.replace(/\*\*(.*?)\*\*/g, '<strong class="text-brand-navy font-bold">$1</strong>');
+        return `<li class="ml-4 list-decimal pl-1 font-medium text-brand-gray/95">${boldClean}</li>`;
+      }).join('');
+      return `<ul class="space-y-1.5 my-2">${items}</ul>`;
+    } else {
+      // Bold parsing for standard lines
+      const boldClean = trimmed.replace(/\*\*(.*?)\*\*/g, '<strong class="text-brand-navy font-bold">$1</strong>');
+      return `<p class="font-medium text-brand-gray/95 leading-relaxed">${boldClean}</p>`;
+    }
+  }).join('');
+}
+
+// ==========================================
+// INTERACTIVE GROWTH ESTIMATOR CONTROL
+// ==========================================
+function initCalculatorSection() {
+  const podcastToggle = document.getElementById('calc-toggle-podcast');
+  const musicToggle = document.getElementById('calc-toggle-music');
+  const slider = document.getElementById('calc-budget-slider');
+  const budgetDisplay = document.getElementById('calc-budget-display');
+  const applyCta = document.getElementById('calc-apply-cta');
+
+  if (!slider) return;
+
+  // Toggle Action podcast
+  podcastToggle.addEventListener('click', () => {
+    appState.estimatorModel = 'podcast';
+    podcastToggle.className = "flex items-center justify-center gap-2.5 py-3 rounded-2xl text-xs font-bold border transition-all border-brand-orange bg-brand-orange/5 text-brand-orange shadow-xs cursor-pointer";
+    musicToggle.className = "flex items-center justify-center gap-2.5 py-3 rounded-2xl text-xs font-bold border transition-all border-brand-border bg-brand-card text-brand-navy/80 hover:bg-white hover:border-brand-orange/20 cursor-pointer";
+    updateCalculations();
+  });
+
+  // Toggle Action music
+  musicToggle.addEventListener('click', () => {
+    appState.estimatorModel = 'music';
+    musicToggle.className = "flex items-center justify-center gap-2.5 py-3 rounded-2xl text-xs font-bold border transition-all border-brand-orange bg-brand-orange/5 text-brand-orange shadow-xs cursor-pointer";
+    podcastToggle.className = "flex items-center justify-center gap-2.5 py-3 rounded-2xl text-xs font-bold border transition-all border-brand-border bg-brand-card text-brand-navy/80 hover:bg-white hover:border-brand-orange/20 cursor-pointer";
+    updateCalculations();
+  });
+
+  // Real-time Slider Listeners
+  slider.addEventListener('input', (e) => {
+    appState.selectedBudget = parseInt(e.target.value);
+    budgetDisplay.innerText = `$${appState.selectedBudget.toLocaleString()}`;
+    updateCalculations();
+  });
+
+  // Apply Estimate CTA
+  applyCta.addEventListener('click', () => {
+    const direction = appState.estimatorModel;
+    const budget = appState.selectedBudget;
+    
+    // Choose appropriate mapped service
+    const serviceName = direction === 'podcast' 
+      ? 'Podcast & Music Promotion' 
+      : 'Podcast & Music Promotion'; // Pre-selected service default for both in contact form
+
+    // Update appState
+    appState.appliedEstimate = { budget, direction, service: serviceName };
+
+    // Update Contact select field
+    const serviceSelect = document.getElementById('contact-service');
+    if (serviceSelect) {
+      serviceSelect.value = serviceName;
+    }
+
+    // Scroll smoothly to contact form
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const offset = 85;
+      const top = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    // Pre-populate message with estimate context
+    const messageInput = document.getElementById('contact-message');
+    if (messageInput) {
+      messageInput.value = `Hi team! I've projected our campaign results using your estimator with a monthly budget of $${budget.toLocaleString()} for a ${direction === 'podcast' ? 'Podcast Show' : 'Music Release'}. We are excited to get a custom roadmap drawn up and start scaling our active subscriber base!`;
+    }
+  });
+
+  // Initial calculations render
+  updateCalculations();
+}
+
+function updateCalculations() {
+  const model = appState.estimatorModel;
+  const budget = appState.selectedBudget;
+
+  const labels = {
+    reach: document.querySelector('[id="proj-reach"]').previousElementSibling,
+    listeners: document.querySelector('[id="proj-listeners"]').previousElementSibling,
+    curators: document.querySelector('[id="proj-curators"]').previousElementSibling,
+    chart: document.querySelector('[id="proj-chart"]').previousElementSibling
+  };
+
+  const displays = {
+    reach: document.getElementById('proj-reach'),
+    listeners: document.getElementById('proj-listeners'),
+    curators: document.getElementById('proj-curators'),
+    chart: document.getElementById('proj-chart')
+  };
+
+  if (model === 'podcast') {
+    // Labels Update
+    labels.reach.innerText = 'Est. Downloads';
+    labels.listeners.innerText = 'Projected New Listeners';
+    labels.curators.innerText = 'Curator Submissions';
+    labels.chart.innerText = 'Expected Chart Boost';
+
+    // Projections Formula
+    const fromReach = Math.round(budget * 10).toLocaleString();
+    const toReach = Math.round(budget * 14).toLocaleString();
+    displays.reach.innerText = `${fromReach} - ${toReach}`;
+
+    const fromListeners = Math.round(budget * 1.05).toLocaleString();
+    const toListeners = Math.round(budget * 1.344).toLocaleString();
+    displays.listeners.innerText = `${fromListeners} - ${toListeners}`;
+
+    const curators = Math.round(budget * 0.056);
+    displays.curators.innerText = `${curators} Networks`;
+
+    let chartText = "Organic Trend Starter";
+    if (budget >= 5000) {
+      chartText = "Top 10 Main Chart Potential";
+    } else if (budget >= 2000) {
+      chartText = "Top 50 Genre Charts Potential";
+    } else if (budget >= 500) {
+      chartText = "Top 100 Genre Charts Potential";
+    }
+    displays.chart.innerText = chartText;
+
+  } else {
+    // Music Releases Labels Update
+    labels.reach.innerText = 'Est. Spotify Streams';
+    labels.listeners.innerText = 'Organic Followers Gained';
+    labels.curators.innerText = 'Curators Pitched';
+    labels.chart.innerText = 'Algorithm Boost Rate';
+
+    // Music Projections Formula
+    const fromReach = Math.round(budget * 12).toLocaleString();
+    const toReach = Math.round(budget * 18).toLocaleString();
+    displays.reach.innerText = `${fromReach} - ${toReach}`;
+
+    const fromListeners = Math.round(budget * 1.20).toLocaleString();
+    const toListeners = Math.round(budget * 1.60).toLocaleString();
+    displays.listeners.innerText = `${fromListeners} - ${toListeners}`;
+
+    const curators = Math.round(budget * 0.08);
+    displays.curators.innerText = `${curators} Curators`;
+
+    let chartText = "Discover Weekly Trigger";
+    if (budget >= 5000) {
+      chartText = "Viral Editorial Integration";
+    } else if (budget >= 2000) {
+      chartText = "Daily Mix algorithmic push";
+    } else if (budget >= 500) {
+      chartText = "Release Radar Placement";
+    }
+    displays.chart.innerText = chartText;
+  }
+}
+
+// ==========================================
+// CONTACT FORM SUBMISSION & STATE MACHINE
+// ==========================================
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const formContainer = document.getElementById('contact-form-container');
+  const successContainer = document.getElementById('contact-success-container');
+  const errorBox = document.getElementById('contact-error-box');
+  const submitBtn = document.getElementById('contact-submit-btn');
+  const resetBtn = document.getElementById('contact-reset-btn');
+
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorBox.classList.add('hidden');
+
+    // Get input values
+    const nameVal = document.getElementById('contact-name').value.trim();
+    const emailVal = document.getElementById('contact-email').value.trim();
+    const showVal = document.getElementById('contact-show').value.trim();
+    const serviceVal = document.getElementById('contact-service').value;
+    const messageVal = document.getElementById('contact-message').value.trim();
+
+    if (!nameVal || !emailVal || !showVal || !serviceVal || !messageVal) {
+      errorBox.innerText = "Please fill out all fields completely before submitting.";
+      errorBox.classList.remove('hidden');
+      return;
+    }
+
+    // Set Loading state on Button
+    const initialBtnContent = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Processing specifications...</span>
+    `;
+
+    // Simulate Server request delay
+    setTimeout(() => {
+      // Restore Button state
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = initialBtnContent;
+
+      // Swap view states
+      formContainer.classList.add('hidden');
+      successContainer.classList.remove('hidden');
+
+      // Populate dynamic receipt
+      document.getElementById('success-user-name').innerText = nameVal;
+      document.getElementById('success-show-title').innerText = `"${showVal}"`;
+      document.getElementById('success-user-email').innerText = emailVal;
+      document.getElementById('success-service-name').innerText = serviceVal;
+
+      // If user applied budget calculation, display in receipt
+      const budgetRow = document.getElementById('success-budget-row');
+      const budgetVal = document.getElementById('success-budget-value');
+      
+      if (appState.appliedEstimate && appState.appliedEstimate.service === serviceVal) {
+        budgetRow.classList.remove('hidden');
+        budgetVal.innerText = `$${appState.appliedEstimate.budget.toLocaleString()} / mo`;
+      } else {
+        budgetRow.classList.add('hidden');
+      }
+
+    }, 1200);
+  });
+
+  // Reset form Action
+  resetBtn.addEventListener('click', () => {
+    form.reset();
+    appState.appliedEstimate = null; // reset applied state
+    successContainer.classList.add('hidden');
+    formContainer.classList.remove('hidden');
+  });
+}
+
+// ==========================================
+// NEWSLETTER NEWS FEED SUBSCRIPTION
+// ==========================================
+function initNewsletterForm() {
+  const form = document.getElementById('newsletter-form');
+  const successBox = document.getElementById('newsletter-success-box');
+
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Hide form, show confirmation box
+    form.classList.add('hidden');
+    successBox.classList.remove('hidden');
+
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // Reset after 5 seconds to allow other signups
+    setTimeout(() => {
+      form.reset();
+      successBox.classList.add('hidden');
+      form.classList.remove('hidden');
+    }, 5000);
+  });
+}
+
+// ==========================================
+// SCROLL TO TOP FLOATING ACTION
+// ==========================================
+function initScrollToTop() {
+  const scrollTopBtn = document.getElementById('footer-scroll-top-btn');
+  if (!scrollTopBtn) return;
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+    </script>
+  </body>
+</html>
