@@ -3,13 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="CM5UObL7t9cGLFkwLU6nwLVVsvclBVP45xDP0pinwWE" />
     <title>icast Elite | Premium Podcast & Music Promotion Agency</title>
-    
-    <!-- Lucide Icons CDN -->
+    <!-- Include Lucide CDN for beautiful iconography -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.456.0/dist/umd/lucide.min.js"></script>
-    
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -149,14 +146,17 @@
         <div class="flex items-center justify-between">
           
           <!-- Logo Brand -->
-          <a href="#home" id="nav-logo" class="flex items-center gap-2 group cursor-pointer">
-            <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-brand-orange text-white shadow-md shadow-brand-orange/20 transition-all duration-300 group-hover:scale-105 group-hover:bg-brand-orange-soft">
-              <i data-lucide="radio" class="w-5 h-5 animate-pulse"></i>
-              <div class="absolute -inset-1 rounded-xl bg-brand-orange/30 blur-xs -z-10 opacity-0 group-hover:opacity-100 transition-all"></div>
+          <a href="#home" id="nav-logo" class="flex items-center group cursor-pointer">
+            <!-- ============================================================= -->
+            <!-- HEADER LOGO PLACEHOLDER                                       -->
+            <!-- ============================================================= -->
+            <img class="w-[2.5em] h-[2.5em] shrink-0" src="./assets/ilogo.svg" alt="iCast Logo" referrerPolicy="no-referrer" />
+            <!-- ============================================================= -->
+            <div class="flex flex-col justify-end h-[2.5em] -ml-[0.55em] relative z-10">
+              <span class="icast-logo text-[1.25em] text-brand-navy select-none leading-none">
+                <span class="italic">Cast </span><span class="text-brand-orange">Elite</span>
+              </span>
             </div>
-            <span class="icast-logo text-xl sm:text-2xl text-brand-navy">
-              i<i>Cast</i> <span class="text-brand-orange">Elite</span>
-            </span>
           </a>
 
           <!-- Desktop Navigation Links -->
@@ -778,12 +778,12 @@
                     2. Campaign Monthly Budget
                   </label>
                   <span class="text-2xl sm:text-3xl font-extrabold text-brand-orange" id="calc-budget-display">
-                    $2,500
+                    $750
                   </span>
                 </div>
 
                 <!-- Range Input -->
-                <input type="range" min="100" max="10000" step="100" value="2500" id="calc-budget-slider" class="w-full h-2 bg-brand-border rounded-lg appearance-none cursor-pointer accent-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20" aria-label="Campaign budget slider" />
+                <input type="range" min="100" max="10000" step="50" value="750" id="calc-budget-slider" class="w-full h-2 bg-brand-border rounded-lg appearance-none cursor-pointer accent-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20" aria-label="Campaign budget slider" />
 
                 <!-- Slider scale helpers -->
                 <div class="flex justify-between text-[10px] font-bold text-brand-gray/60 uppercase">
@@ -1098,13 +1098,17 @@
           
           <!-- Footer Logo & Blurb -->
           <div class="lg:col-span-4 space-y-6">
-            <a href="#home" class="flex items-center gap-2 group cursor-pointer" id="footer-logo">
-              <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-brand-orange text-white shadow-md">
-                <i data-lucide="radio" class="w-4 h-4 text-white"></i>
+            <a href="#home" class="flex items-center group cursor-pointer" id="footer-logo">
+              <!-- ============================================================= -->
+              <!-- FOOTER LOGO PLACEHOLDER                                       -->
+              <!-- ============================================================= -->
+              <img class="w-[2.5em] h-[2.5em] shrink-0" src="./assets/ilogo.svg" alt="iCast Logo" referrerPolicy="no-referrer" />
+              <!-- ============================================================= -->
+              <div class="flex flex-col justify-end h-[2.5em] -ml-[0.55em] relative z-10">
+                <span class="icast-logo text-[1.25em] text-brand-navy select-none leading-none">
+                  <span class="italic">Cast </span><span class="text-brand-orange">Elite</span>
+                </span>
               </div>
-              <span class="icast-logo text-lg sm:text-xl text-brand-navy">
-                i<i>Cast</i> <span class="text-brand-orange">Elite</span>
-              </span>
             </a>
 
             <p class="text-xs sm:text-sm text-brand-gray leading-relaxed font-medium">
@@ -1639,7 +1643,7 @@ Brands care about actual conversions. Presenting yourself as an authentic partne
 // Global Application State
 const appState = {
   estimatorModel: 'podcast', // 'podcast' or 'music'
-  selectedBudget: 2500,
+  selectedBudget: 750,
   activePortfolioFilter: 'All',
   activeTestimonialIndex: 0,
   testimonialIntervalId: null,
@@ -2461,6 +2465,15 @@ function updateCalculations() {
     chart: document.getElementById('proj-chart')
   };
 
+  const units = budget / 100;
+
+  // Stable pseudo-random generator
+  function getStableVal(seed, offsetKey, minVal, maxVal) {
+    const val = Math.sin(seed + offsetKey) * 10000;
+    const rand = val - Math.floor(val);
+    return minVal + Math.floor(rand * (maxVal - minVal + 1));
+  }
+
   if (model === 'podcast') {
     // Labels Update
     labels.reach.innerText = 'Est. Downloads';
@@ -2469,9 +2482,16 @@ function updateCalculations() {
     labels.chart.innerText = 'Expected Chart Boost';
 
     // Projections Formula
-    const fromReach = Math.round(budget * 10).toLocaleString();
-    const toReach = Math.round(budget * 14).toLocaleString();
-    displays.reach.innerText = `${fromReach} - ${toReach}`;
+    // For $100 the maximum downloads will be 1000+1 to 10
+    const maxOffset = getStableVal(budget, 13, 1, 10);
+    const maxDownloads = Math.round(units * (1000 + maxOffset));
+
+    // The minimum is going to be less 30% to 35% +1 to 10
+    const pctLess = getStableVal(budget, 27, 30, 35) / 100; // 0.30 to 0.35
+    const minOffset = getStableVal(budget, 41, 1, 10);
+    const minDownloads = Math.round(maxDownloads * (1 - pctLess) + units * minOffset);
+
+    displays.reach.innerText = `${minDownloads.toLocaleString()} - ${maxDownloads.toLocaleString()}`;
 
     const fromListeners = Math.round(budget * 1.05).toLocaleString();
     const toListeners = Math.round(budget * 1.344).toLocaleString();
@@ -2498,9 +2518,16 @@ function updateCalculations() {
     labels.chart.innerText = 'Algorithm Boost Rate';
 
     // Music Projections Formula
-    const fromReach = Math.round(budget * 12).toLocaleString();
-    const toReach = Math.round(budget * 18).toLocaleString();
-    displays.reach.innerText = `${fromReach} - ${toReach}`;
+    // Use 1200 as base maximum for Music Streams
+    const maxOffset = getStableVal(budget, 53, 1, 10);
+    const maxStreams = Math.round(units * (1200 + maxOffset));
+
+    // The minimum is going to be less 30% to 35% +1 to 10
+    const pctLess = getStableVal(budget, 67, 30, 35) / 100;
+    const minOffset = getStableVal(budget, 81, 1, 10);
+    const minStreams = Math.round(maxStreams * (1 - pctLess) + units * minOffset);
+
+    displays.reach.innerText = `${minStreams.toLocaleString()} - ${maxStreams.toLocaleString()}`;
 
     const fromListeners = Math.round(budget * 1.20).toLocaleString();
     const toListeners = Math.round(budget * 1.60).toLocaleString();
